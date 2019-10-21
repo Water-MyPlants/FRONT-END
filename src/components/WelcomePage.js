@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import PlantList from "./PlantList";
 
 export default function WelcomePage() {
   return (
@@ -12,6 +13,7 @@ export default function WelcomePage() {
         <Redirect exact from="/" to="/login" />
         <Route path="/login" exact component={LoginForm} />
         <Route path="/signup" exact component={SignupForm} />
+        <Route path="/plants" exact component={PlantList} />
       </Switch>
     </WrapperStyle>
   );
