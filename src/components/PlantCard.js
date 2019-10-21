@@ -19,8 +19,3 @@ const PlantCard = ({ plant, editingPlant, deletePlant }) => {
 };
 
 export default PlantCard;
-//  - `id`: Integer
-// - `nickname`: String
-// - `species` : String
-// - `h2oFrequency`: Type determined by implementation
-// - `image`: optional
