@@ -8,14 +8,13 @@ import * as actionCreators from "../state/actionCreators";
 const SignupForm = ({
   errors,
   touched,
-  // userData,
   values,
   status,
   userSignUpRequest,
 
 }) => {
-  const handleSubmit= (e) => {
 
+  const handleSubmit= (e) => {
     e.preventDefault();
     userSignUpRequest(values);
   }
