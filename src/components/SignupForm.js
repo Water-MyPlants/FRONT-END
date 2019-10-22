@@ -12,35 +12,35 @@ const SignupForm = ({
   values,
   status,
   userSignUpRequest,
-  onSignUpInputChange
+  // onSignUpInputChange
 }) => {
   const handleSubmit= (e) => {
     e.preventDefault();
     userSignUpRequest(userData);
   }
-  const onInputChange = e => {
-    e.preventDefault();
-    onSignUpInputChange(e.target);
-  }
+  // const onInputChange = e => {
+  //   e.preventDefault();
+  //   onSignUpInputChange(e.target);
+  // }
   return (
     // SIGN UP Form with validation using Yup for Formik //
 
     <div className="form-container">
       <Form className="form" onSubmit={handleSubmit}>
         <label>User Name:</label>
-        <Field type="text" name="userName" placeholder="User Name" onChange={onInputChange}/>
+        <Field type="text" name="userName" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
         {touched.userName && errors.userName && (
           <span className="error">{errors.userName}</span>
         )}
         <label>Password:</label>
-        <Field type="password" name="password" placeholder="Password" onChange={onInputChange} />
+        <Field type="password" name="password" placeholder="Password" />
         <small>(Between 4-16 characters)</small>
         {touched.password && errors.password && (
           <span className="error">{errors.password}</span>
         )}
         <label>Mobile Phone #:</label>
-        <Field type="text" name="phone" placeholder="Mobile Phone #" onChange={onInputChange}/>
+        <Field type="text" name="phone" placeholder="Mobile Phone #" />
         {touched.phone && errors.phone && (
           <span className="error">{errors.phone}</span>
         )}

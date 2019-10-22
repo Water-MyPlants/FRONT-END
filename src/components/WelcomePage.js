@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import styled from "styled-components";
-
+import * as withAuth from "../helpers//axiosWithAuth";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import PlantList from "./PlantList";
@@ -11,9 +11,9 @@ export default function WelcomePage() {
     <WrapperStyle className="wrapper">
       <Switch>
         <Redirect exact from="/" to="/login" />
-        <Route path="/login" exact component={LoginForm} />
+        <Route path="/login" render={props => <LoginForm {...props} />} />
         <Route path="/signup" exact component={SignupForm} />
-        <Route path="/plants" exact component={PlantList} />
+        <withAuth.asRoute path="/plants" exact component={PlantList} />
       </Switch>
     </WrapperStyle>
   );
