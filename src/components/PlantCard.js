@@ -1,17 +1,17 @@
 import React from "react";
 
-const PlantCard = props => {
+const PlantCard = ({ plant, editingPlant, deletePlant }) => {
   const onEdit = e => {
-    editingPlant(props.plant);
+    editingPlant(plant);
   };
   const onDelete = e => {
-    deletePlant(props.plant.id);
+    deletePlant(plant.id);
   };
   return (
     <article className="plant-card">
-      <h1>NickName: {props.id}</h1>
-      <h2>Species: {props.species}</h2>
-      <h3>h2o Frequency: {props.h2oFrequency}</h3>
+      <h1>NickName: {plant.id}</h1>
+      <h2>Species: {plant.species}</h2>
+      <h3>h2o Frequency: {plant.h2oFrequency}</h3>
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
     </article>
@@ -19,8 +19,3 @@ const PlantCard = props => {
 };
 
 export default PlantCard;
-//  - `id`: Integer
-// - `nickname`: String
-// - `species` : String
-// - `h2oFrequency`: Type determined by implementation
-// - `image`: optional

@@ -16,7 +16,7 @@ const SignupForm = ({ errors, touched, values, status }) => {
           <span className="error">{errors.userName}</span>
         )}
         <label>Mobile Phone #:</label>
-        <Field type="text" name="phone" placeholder="Mobile Phone #" />
+        <Field type="text" name="phone" placeholder="+1 (123) 456-7890" />
         {touched.phone && errors.phone && (
           <span className="error">{errors.phone}</span>
         )}
@@ -39,9 +39,9 @@ const SignupForm = ({ errors, touched, values, status }) => {
 };
 
 //phone number Regex Validation
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const phoneRegExp = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
 //!!!phone number Regex Validation
-
+;
 // withFormik validation and Yup Error Messages //
 const FormikSignupForm = withFormik({
   mapPropsToValues({ userName, phone, password }) {
