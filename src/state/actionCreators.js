@@ -1,0 +1,8 @@
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const SET_LOADING = 'SET_LOADING';
+export const ON_LOGIN_INPUT_CHANGE = 'ON_LOGIN_INPUT_CHANGE';
+export const ON_PLANTS_INPUT_CHANGE = 'ON_PLANTS_INPUT_CHANGE';
+export const GET_PLANTS_LIST = 'GET_PLANTS_LIST';
+export const SET_PLANTS_LIST = 'SET_PLANTS_LIST';
+export const EDIT_PLANT = 'EDIT_PLANT';
