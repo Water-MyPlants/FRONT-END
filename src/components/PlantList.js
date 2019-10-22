@@ -3,8 +3,10 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 
 import PlantCard from "./PlantCard";
+import UploadForm from './UploadForm'
 
 export const PlantList = ({ errors, touched, values, status }) => {
+
   return (
     <div className="wrapper">
       <div className="plant-list-container">
@@ -34,6 +36,7 @@ export const PlantList = ({ errors, touched, values, status }) => {
             ADD PLANT
           </button>
         </Form>
+        <UploadForm />
       </div>
     </div>
   );
