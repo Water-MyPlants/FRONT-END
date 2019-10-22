@@ -4,15 +4,24 @@ import * as types from './actionTypes';
 
 const registerApi = "https://build-week-4.herokuapp.com/api/user/register";
 const loginApi = `https://build-week-4.herokuapp.com/api/user/login`
+
+
+
+
+
 export const userSignUpRequest = userData => dispatch => {
+    console.log(userData)
       axios.post(registerApi, userData)
-      .then(({ data }) => {
-        debugger
-        dispatch({ type: types.SIGN_UP });
-        localStorage.setItem('login_token', data.payload);
+      .then(res => {
+        console.log(res);
     })
     .catch(err => console.log(err));
   };
+
+
+
+
+  
 
 //   export const onSignUpInputChange = field => {
 //       return {

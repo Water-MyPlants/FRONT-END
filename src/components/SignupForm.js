@@ -8,27 +8,25 @@ import * as actionCreators from "../state/actionCreators";
 const SignupForm = ({
   errors,
   touched,
-  userData,
+  // userData,
   values,
   status,
   userSignUpRequest,
-  // onSignUpInputChange
+
 }) => {
   const handleSubmit= (e) => {
+
     e.preventDefault();
-    userSignUpRequest(userData);
+    userSignUpRequest(values);
   }
-  // const onInputChange = e => {
-  //   e.preventDefault();
-  //   onSignUpInputChange(e.target);
-  // }
+ 
   return (
     // SIGN UP Form with validation using Yup for Formik //
 
     <div className="form-container">
-      <Form className="form" onSubmit={handleSubmit}>
+      <Form className="form" onSubmit={handleSubmit} >
         <label>User Name:</label>
-        <Field type="text" name="userName" placeholder="User Name" />
+        <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
         {touched.userName && errors.userName && (
           <span className="error">{errors.userName}</span>
@@ -40,7 +38,7 @@ const SignupForm = ({
           <span className="error">{errors.password}</span>
         )}
         <label>Mobile Phone #:</label>
-        <Field type="text" name="phone" placeholder="Mobile Phone #" />
+        <Field type="text" name="phoneNumber" placeholder="Mobile Phone #" />
         {touched.phone && errors.phone && (
           <span className="error">{errors.phone}</span>
         )}
@@ -63,10 +61,10 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 
 // withFormik validation and Yup Error Messages //
 const FormikSignupForm = withFormik({
-  mapPropsToValues({ userName, phone, password }) {
+  mapPropsToValues({ username, phoneNumber, password }) { 
     return {
-      userName: userName || "",
-      phone: phone || "",
+      username: username || "",
+      phoneNumber: phoneNumber || "",
       password: password || ""
     };
   },
