@@ -43,11 +43,12 @@ export const PlantList = ({ errors, touched, values, status }) => {
 };
 
 const FormikPlantForm = withFormik({
-  mapPropsToValues({ nickName, species, h2oFrequency }) {
+  mapPropsToValues({ nickName, species, h2oFrequency, image }) {
     return {
       nickName: nickName || "",
       species: species || "",
-      h2oFrequency: h2oFrequency || ""
+      h2oFrequency: h2oFrequency || "",
+      image: image || ""
     };
   },
 
