@@ -10,6 +10,10 @@ import * as serviceWorker from "./serviceWorker";
 
 const monsterReducer = combineReducers({ 
   signup: reducers.signupReducer,
+  // login: reducers.loginReducer,
+  // isLoading: reducers.loadingReducer,
+  // friendsList: reducers.friendsReducer,
+  // addFriend: reducers.addFriendReducer
 });
 
 const store = createStore(
