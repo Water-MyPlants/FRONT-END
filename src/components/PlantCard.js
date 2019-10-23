@@ -1,8 +1,11 @@
 import React from "react";
+import { connect } from 'react-redux';
+import * as actionCreators from '../state/actionCreators';
 
-const PlantCard = ({ plant, editingPlant, deletePlant }) => {
+
+const PlantCard = ({ plant, startEditPlant, deletePlant }) => {
   const onEdit = e => {
-    editingPlant(plant);
+    startEditPlant(plant);
   };
   const onDelete = e => {
     deletePlant(plant.id);
@@ -18,4 +21,4 @@ const PlantCard = ({ plant, editingPlant, deletePlant }) => {
   );
 };
 
-export default PlantCard;
+export default connect(state => state, actionCreators)(PlantCard);

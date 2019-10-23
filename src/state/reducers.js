@@ -61,3 +61,30 @@ export const plantsReducer = (state = initialPlantsState, action) => {
       return state;
   }
 };
+
+const initialAddPlantFormState = {
+	id: null,
+	name: "",
+	age: "",
+	email: "",
+};
+export const addPlantReducer = (state = initialAddPlantFormState, action) => {
+	switch (action.type) {
+		case types.LOGOUT:
+		case types.SET_PLANTS_LIST:
+			return initialAddPlantFormState;
+		case types.ON_PLANTS_INPUT_CHANGE:
+			return {
+				...state,
+				...action.payload
+			}
+		case types.EDIT_PLANT:
+			return {
+				...state,
+				...action.payload
+			}
+			
+		default:
+			return state;
+  }
+}

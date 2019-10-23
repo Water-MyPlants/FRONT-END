@@ -12,6 +12,8 @@ const monsterReducer = combineReducers({
   userData: reducers.signupReducer,
   login: reducers.loginReducer,
   isLoading: reducers.loadingReducer,
+  plantsList: reducers.plantsReducer,
+  addPlant: reducers.addPlantReducer
 
 });
 
