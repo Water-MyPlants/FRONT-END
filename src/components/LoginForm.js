@@ -2,23 +2,31 @@ import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import * as actionCreators from '../state/actionCreators';
-// import * as withAuth from '../helpers/withAuth';
+import {attemptLogin} from '../state/actionCreators' 
+import { connect } from 'react-redux'
+
+
 
 
 import waterLogo from '../assets/waterLogo.png';
 
 
-const LoginForm = ({ errors, touched, values, status, history, login, onLoginInputChange, attemptLogin, logout }) => {
+const LoginForm = ({ errors, touched, values, status, history, login, attemptLogin, logout }) => {
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    attemptLogin(values)
+
+  }
   
   return (
     // Login Form with validation using Yup for Formik //
 
     <div id="login-form" className="form-container">
-      <Form className="form">
-        <div className='water-logo'><img src={waterLogo} /></div>
+      <Form className="form" onSubmit={handleSubmit}>
+        <div className='water-logo'><img alt='water my plants logo' src={waterLogo} /></div>
         <label>User Name:</label>
-        <Field type="text" name="userName" placeholder="User Name" />
+        <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
         {touched.userName && errors.userName && (
           <span className="error">{errors.userName}</span>
@@ -34,9 +42,8 @@ const LoginForm = ({ errors, touched, values, status, history, login, onLoginInp
         </button>
         <Link className="form-link" to="/signup">
         Dont have an account?
-      </Link>
+        </Link>
       </Form>
-      
     </div>
     //!!! Login Form with validation using Yup for Formik //
   );
@@ -44,15 +51,15 @@ const LoginForm = ({ errors, touched, values, status, history, login, onLoginInp
 
 // withFormik validation and Yup Error Messages //
 const FormikLoginForm = withFormik({
-  mapPropsToValues({ userName, password }) {
+  mapPropsToValues({ username, password }) {
     return {
-      userName: userName || "",
+      username: username || "",
       password: password || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    userName: Yup.string()
+    username: Yup.string()
       .min(4, "Need atleast 4 characters")
       .max(16, "No more than 16 characters")
       .required("User Name is required"),
@@ -63,4 +70,10 @@ const FormikLoginForm = withFormik({
   })
 })(LoginForm);
 //!!! withFormik validation and Yup Error Messages //
-export default FormikLoginForm;
+
+//attemptLogin
+
+export default connect(
+  state => state,
+  attemptLogin
+)(FormikLoginForm);
