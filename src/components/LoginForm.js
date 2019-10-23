@@ -16,7 +16,7 @@ const LoginForm = ({ errors, touched, values, status, history, login, onLoginInp
 
     <div id="login-form" className="form-container">
       <Form className="form">
-        <div className='water-logo'><img src={waterLogo} /></div>
+        <div className='water-logo'><img alt='water my plants logo' src={waterLogo} /></div>
         <label>User Name:</label>
         <Field type="text" name="userName" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>

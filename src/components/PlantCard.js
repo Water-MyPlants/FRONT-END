@@ -9,7 +9,7 @@ const PlantCard = ({ plant, editingPlant, deletePlant }) => {
   };
   return (
     <article className="plant-card">
-      <img>{plant.image}</img>
+      <img alt='Your plant'>{plant.image}</img>
       <h1>NickName: {plant.id}</h1>
       <h2>Species: {plant.species}</h2>
       <h3>h2o Frequency: {plant.h2oFrequency}</h3>
