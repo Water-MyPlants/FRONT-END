@@ -37,7 +37,6 @@ const WrapperStyle = styled.div`
     background: white;
     opacity: 0.6;
     width: 360px;
-    height: 420px;
     max-width: 60%;
     border-radius: 12px;
     margin: 5% 5% 0;
@@ -82,8 +81,19 @@ const WrapperStyle = styled.div`
       font-size: 1.4rem;
       margin: 0 auto;
     }
+    .water-logo{
+      display: flex;
+      justify-content: center;
+      img {
+        max-width: 50%;
+        margin: 5% auto;
+      }
+    }
   }
   #login-form {
-    height: 325px;
+    height: 60%;
+  }
+  #signup-form {
+    height: 70%;
   }
 `;

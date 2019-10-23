@@ -3,12 +3,15 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 
+import waterLogo from '../assets/waterLogo.png';
+
 const SignupForm = ({ errors, touched, values, status }) => {
   return (
     // SIGN UP Form with validation using Yup for Formik //
 
-    <div className="form-container">
+    <div id="signup-form" className="form-container">
       <Form className="form">
+      <div className='water-logo'><img src={waterLogo} /></div>
         <label>User Name:</label>
         <Field type="text" name="userName" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
