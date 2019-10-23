@@ -5,15 +5,18 @@ import { Link } from "react-router-dom";
 import * as actionCreators from '../state/actionCreators';
 // import * as withAuth from '../helpers/withAuth';
 
+
+import waterLogo from '../assets/waterLogo.png';
+
+
 const LoginForm = ({ errors, touched, values, status, history, login, onLoginInputChange, attemptLogin, logout }) => {
-  
-  
   
   return (
     // Login Form with validation using Yup for Formik //
 
     <div id="login-form" className="form-container">
       <Form className="form">
+        <div className='water-logo'><img src={waterLogo} /></div>
         <label>User Name:</label>
         <Field type="text" name="userName" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
@@ -29,10 +32,11 @@ const LoginForm = ({ errors, touched, values, status, history, login, onLoginInp
         <button className="btn" type="submit">
           LOG IN
         </button>
-      </Form>
-      <Link className="form-link" to="/signup">
+        <Link className="form-link" to="/signup">
         Dont have an account?
       </Link>
+      </Form>
+      
     </div>
     //!!! Login Form with validation using Yup for Formik //
   );

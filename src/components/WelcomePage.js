@@ -5,6 +5,7 @@ import * as withAuth from "../helpers//axiosWithAuth";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import PlantList from "./PlantList";
+import background from "../assets/background.jpeg";
 
 export default function WelcomePage() {
   return (
@@ -19,6 +20,12 @@ export default function WelcomePage() {
   );
 }
 const WrapperStyle = styled.div`
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: flex-end;
   @media (max-width: 768px) {
@@ -30,7 +37,6 @@ const WrapperStyle = styled.div`
     background: white;
     opacity: 0.6;
     width: 360px;
-    height: 420px;
     max-width: 60%;
     border-radius: 12px;
     margin: 5% 5% 0;
@@ -43,7 +49,7 @@ const WrapperStyle = styled.div`
       flex-direction: column;
       label {
         font-size: 2.2rem;
-        padding: 2% 0 0 5%;
+        padding: 2% 0 1% 5%;
       }
       small {
         font-size: 1.3rem;
@@ -54,8 +60,10 @@ const WrapperStyle = styled.div`
         padding-left: 2%;
         width: 90%;
         height: 30px;
-        border: 1px solid black;
-        border-radius: 3px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid black;
       }
       .btn {
         border: 1px solid black;
@@ -73,8 +81,19 @@ const WrapperStyle = styled.div`
       font-size: 1.4rem;
       margin: 0 auto;
     }
+    .water-logo{
+      display: flex;
+      justify-content: center;
+      img {
+        max-width: 50%;
+        margin: 5% auto;
+      }
+    }
   }
   #login-form {
-    height: 325px;
+    height: 60%;
+  }
+  #signup-form {
+    height: 70%;
   }
 `;

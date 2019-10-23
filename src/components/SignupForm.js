@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
+
+import waterLogo from '../assets/waterLogo.png';
+
 const SignupForm = ({
   errors,
   touched,
@@ -25,8 +28,9 @@ const SignupForm = ({
   return (
     // SIGN UP Form with validation using Yup for Formik //
 
-    <div className="form-container">
+    <div id="signup-form" className="form-container">
       <Form className="form" onSubmit={handleSubmit}>
+        <div className='water-logo'><img src={waterLogo} />
         <label>User Name:</label>
         <Field type="text" name="userName" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
