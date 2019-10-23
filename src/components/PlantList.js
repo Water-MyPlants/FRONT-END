@@ -21,7 +21,7 @@ export const PlantList = ({ errors, touched, values, status }) => {
             <span className="error">{errors.nickName}</span>
           )}
           <label>Species:</label>
-          <Field type="text" name="species" placeholder="Plant Species" />
+          <Field type="text" name="species" placeholder="Species" />
           {touched.species && errors.species && (
             <span className="error">{errors.species}</span>
           )}
