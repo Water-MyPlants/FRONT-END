@@ -35,6 +35,12 @@ export const onLoginInputChange = field => {
     payload: { [field.name]: field.value }
   };
 };
+export const onPlantsInputChange = field => {
+	return {
+		type: types.ON_PLANTS_INPUT_CHANGE,
+		payload: { [field.name]: field.value }
+	};
+}
 
 export const logout = () => {
   localStorage.removeItem("token");
