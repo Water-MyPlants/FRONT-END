@@ -14,7 +14,8 @@ export default class UploadForm extends Component {
         })
       }
     
-    imgUploadHandler = () => {
+    imgUploadHandler = e => {
+      console.log(e.target.files)
         const formData = new FormData();
         formData.append('image', this.state.selectedImg, this.state.selectedImg.name);
         axios.post('https://build-week-4.herokuapp.com/api/plants', formData).then(res => {

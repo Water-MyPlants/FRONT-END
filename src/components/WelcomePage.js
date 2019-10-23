@@ -5,6 +5,7 @@ import styled from "styled-components";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import PlantList from "./PlantList";
+import background from "../assets/background.jpeg";
 
 export default function WelcomePage() {
   return (
@@ -19,6 +20,12 @@ export default function WelcomePage() {
   );
 }
 const WrapperStyle = styled.div`
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: flex-end;
   @media (max-width: 768px) {
