@@ -2,8 +2,13 @@ import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import * as actionCreators from '../state/actionCreators';
+// import * as withAuth from '../helpers/withAuth';
 
-const LoginForm = ({ errors, touched, values, status }) => {
+const LoginForm = ({ errors, touched, values, status, history, login, onLoginInputChange, attemptLogin, logout }) => {
+  
+  
+  
   return (
     // Login Form with validation using Yup for Formik //
 

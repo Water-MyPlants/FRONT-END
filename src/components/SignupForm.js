@@ -2,13 +2,31 @@ import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actionCreators from "../state/actionCreators";
 
-const SignupForm = ({ errors, touched, values, status }) => {
+const SignupForm = ({
+  errors,
+  touched,
+  userData,
+  values,
+  status,
+  userSignUpRequest,
+  // onSignUpInputChange
+}) => {
+  const handleSubmit= (e) => {
+    e.preventDefault();
+    userSignUpRequest(userData);
+  }
+  // const onInputChange = e => {
+  //   e.preventDefault();
+  //   onSignUpInputChange(e.target);
+  // }
   return (
     // SIGN UP Form with validation using Yup for Formik //
 
     <div className="form-container">
-      <Form className="form">
+      <Form className="form" onSubmit={handleSubmit}>
         <label>User Name:</label>
         <Field type="text" name="userName" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
@@ -26,6 +44,12 @@ const SignupForm = ({ errors, touched, values, status }) => {
         {touched.password && errors.password && (
           <span className="error">{errors.password}</span>
         )}
+        <label>Mobile Phone #:</label>
+        <Field type="text" name="phone" placeholder="Mobile Phone #" />
+        {touched.phone && errors.phone && (
+          <span className="error">{errors.phone}</span>
+        )}
+
         <button className="btn" type="submit">
           SIGN UP
         </button>
@@ -67,4 +91,8 @@ const FormikSignupForm = withFormik({
   })
 })(SignupForm);
 //!!! withFormik validation and Yup Error Messages //
-export default FormikSignupForm;
+
+export default connect(
+  state => state,
+  actionCreators
+)(FormikSignupForm);
