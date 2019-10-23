@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import styled from "styled-components";
-import * as withAuth from "../helpers//axiosWithAuth";
+import * as withAuth from "../helpers/axiosWithAuth";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import PlantList from "./PlantList";

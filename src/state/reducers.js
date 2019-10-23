@@ -49,14 +49,15 @@ export const loadingReducer = (state = initialLoadingState, action) => {
       return state;
   }
 };
-// const initialPlantsState = [];
-// export const plantsReducer = (state = initialPlantsState, action) => {
-//   switch (action.type) {
-//     case types.LOGOUT:
-//       return initialPlantsState;
-//     case types.SET_PLANTS_LIST:
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// };
+
+const initialPlantsState = [];
+export const plantsReducer = (state = initialPlantsState, action) => {
+  switch (action.type) {
+    case types.LOGOUT:
+      return initialPlantsState;
+    case types.SET_PLANTS_LIST:
+      return action.payload;
+    default:
+      return state;
+  }
+};
