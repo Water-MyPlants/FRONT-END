@@ -32,5 +32,11 @@ body {
   font: inherit;
   vertical-align: baseline;
   }
+  h1, label {
+    font-family: 'Roboto', sans-serif;
+  }
+  small a {
+    font-family: 'Roboto Slab', serif;
+  }
 `;
 

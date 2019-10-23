@@ -50,7 +50,7 @@ const WrapperStyle = styled.div`
       flex-direction: column;
       label {
         font-size: 2.2rem;
-        padding: 2% 0 0 5%;
+        padding: 2% 0 1% 5%;
       }
       small {
         font-size: 1.3rem;
@@ -61,8 +61,10 @@ const WrapperStyle = styled.div`
         padding-left: 2%;
         width: 90%;
         height: 30px;
-        border: 1px solid black;
-        border-radius: 3px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid black;
       }
       .btn {
         border: 1px solid black;
