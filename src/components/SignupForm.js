@@ -18,27 +18,23 @@ const SignupForm = ({
   // onSignUpInputChange
 }) => {
   const handleSubmit= (e) => {
+    console.log('in handleSub',values)
     e.preventDefault();
-    userSignUpRequest(userData);
+    userSignUpRequest(values);
   }
-  // const onInputChange = e => {
-  //   e.preventDefault();
-  //   onSignUpInputChange(e.target);
-  // }
   return (
     // SIGN UP Form with validation using Yup for Formik //
-    <>
     <div id="signup-form" className="form-container">
       <Form className="form" onSubmit={handleSubmit}>
         <div className='water-logo'><img alt='water my plants logo' src={waterLogo} /></div>
         <label>User Name:</label>
-        <Field type="text" name="userName" placeholder="User Name" />
+        <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
         {touched.userName && errors.userName && (
           <span className="error">{errors.userName}</span>
         )}
         <label>Mobile Phone #:</label>
-        <Field type="text" name="phone" placeholder="+1 (123) 456-7890" />
+        <Field type="text" name="phoneNumber" placeholder="+1 (123) 456-7890" />
         {touched.phone && errors.phone && (
           <span className="error">{errors.phone}</span>
         )}
@@ -48,12 +44,6 @@ const SignupForm = ({
         {touched.password && errors.password && (
           <span className="error">{errors.password}</span>
         )}
-        <label>Mobile Phone #:</label>
-        <Field type="text" name="phone" placeholder="Mobile Phone #" />
-        {touched.phone && errors.phone && (
-          <span className="error">{errors.phone}</span>
-        )}
-
         <button className="btn" type="submit">
           SIGN UP
         </button>
@@ -62,37 +52,33 @@ const SignupForm = ({
         Already have an account?
       </Link>
     </div>
-    </>
     //!!! SIGN UP Form with validation using Yup for Formik //
   );
 };
 
 //phone number Regex Validation
-const phoneRegExp = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+// const phoneRegExp = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
 //!!!phone number Regex Validation
-;
 // withFormik validation and Yup Error Messages //
 const FormikSignupForm = withFormik({
-  mapPropsToValues({ userName, phone, password }) {
+  mapPropsToValues({ username, phoneNumber, password }) {
     return {
-      userName: userName || "",
-      phone: phone || "",
+      username: username || "",
+      phoneNumber: phoneNumber || "",
       password: password || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    userName: Yup.string()
+    username: Yup.string()
       .min(4, "Need atleast 4 characters")
       .max(16, "No more than 16 characters")
       .required("User Name is required"),
-    phone: Yup.string()
-      .matches(phoneRegExp, "Phone number is not valid")
-      .required("Please enter a valid Phone Number"),
+    phoneNumber: Yup.string(),
     password: Yup.string()
       .min(4, "Need atleast 4 characters")
       .max(16, "No more than 16 characters")
-      .required("Password is required")
+      .required("Password is required"),
   })
 })(SignupForm);
 //!!! withFormik validation and Yup Error Messages //

@@ -5,6 +5,7 @@ import * as types from './actionTypes';
 const registerApi = "https://build-week-4.herokuapp.com/api/user/register";
 const loginApi = `https://build-week-4.herokuapp.com/api/user/login`
 export const userSignUpRequest = userData => dispatch => {
+	console.log('in action creator',userData)
       axios.post(registerApi, userData)
       .then(({ data }) => {
         debugger
@@ -25,17 +26,11 @@ export const setLoading = (isLoading) => {
 	return { type: types.SET_LOADING, payload: isLoading };
 }
 
-export const onLoginInputChange = field => {
-	return {
-		type: types.ON_LOGIN_INPUT_CHANGE,
-		payload: { [field.name]: field.value }
-	};
-}
 
-export const logout = () => {
-	localStorage.removeItem('login_token');
-	return { type: types.LOGOUT };
-}
+// export const logout = () => {
+// 	localStorage.removeItem('login_token');
+// 	return { type: types.LOGOUT };
+// }
 export const attemptLogin = (login) => dispatch => {
 	axios.post(loginApi, login)
 		.then(({ data }) => {

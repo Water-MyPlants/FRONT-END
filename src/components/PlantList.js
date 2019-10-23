@@ -9,6 +9,24 @@ import UploadForm from './UploadForm'
 
 export const PlantList = ({ errors, touched, values, status }) => {
 
+  const plantList = [
+    {
+      username: 'robert',
+      phoneNumber: "+1 (509)991-1965",
+      password: 'password'
+    },
+    {
+      username: 'jonny',
+      phoneNumber: "+44 (209)801-1456",
+      password: 'asdf'
+    },
+    {
+      username: 'jill',
+      phoneNumber: "+20 (242)164-1854",
+      password: 'pass'
+    }
+  ];
+
   return (
     <PlantListStyle className="plant-list-wrapper">
         <ProfileCard />
@@ -37,9 +55,9 @@ export const PlantList = ({ errors, touched, values, status }) => {
         </div>
       <div className="plant-list-container">
         <h2>Dont forget to water your plants!</h2>
-        {/* {plantList
+        {plantList
           ? plantList.map(plant => <PlantCard key={plant.id} plant={plant} />)
-          : null} */}
+          : null}
       </div>
     </PlantListStyle>
   );
