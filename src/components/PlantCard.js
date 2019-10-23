@@ -16,7 +16,7 @@ const PlantCard = ({ plant, editingPlant, deletePlant }) => {
       <div className='plant-img' />
       <h2>NickName: {plant.id}</h2>
       <h2>Species: {plant.species}</h2>
-      <h2>h2o Frequency: {plant.h2oFrequency}</h2>
+      <h2>H20 Frequency: {plant.h2oFrequency}</h2>
       <div className='btn-container'>
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
@@ -28,7 +28,7 @@ const PlantCard = ({ plant, editingPlant, deletePlant }) => {
 export default PlantCard;
 
 const PlantCardStyle = styled.article`
-  background-image: url(${grass});
+  background-image: linear-gradient(to bottom, transparent 50%, black 100%), url(${grass});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -39,13 +39,22 @@ const PlantCardStyle = styled.article`
   flex-direction: column;
   justify-content: flex-end;
   align-items; center;
-  padding: 3% 3% 0;
+  padding: 3% 3% 1%;
   margin: 3%;
   width: 300px;
   max-width: 25%;
   .btn-container {
     display: flex;
+    justify-content: center;
     height: 100%;
+    button{
+      width: 100%;
+      margin: 3% 5%;
+      background: #518999;
+      color: white;
+      border-radius: 8px;
+      border: none;
+    }
   }
   .plant-img {
     margin: 0 auto;
@@ -57,5 +66,8 @@ const PlantCardStyle = styled.article`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  }
+  h2 {
+    color: white; 
   }
 `;

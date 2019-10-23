@@ -94,7 +94,7 @@ display: flex;
 flex-direction: column;
 justify-content: flex-start;
 align-items: flex-start;
-background-image: linear-gradient(to bottom, #518999 0%,#CE96A6 100%);
+background-image: linear-gradient(to bottom, #518999 0%, #CE96A6 100%);
 max-width: 280px;
 width: 28%;
 .add-plant-container {
@@ -113,6 +113,10 @@ width: 28%;
   .add-btn{
     margin: 5% auto;
     width: 60%;
+    background: #518999;
+    color: white;
+    border-radius: 8px;
+    border: none;
   }
 }
 .upload-container {
@@ -152,9 +156,9 @@ h1 {
 
 `;
 const PlantListStyle = styled.section`
-background-image: linear-gradient(to bottom, #99b272 25%, transparent 100%), url(${wall});
+background-image: linear-gradient(to bottom, #99b272 0%, transparent 100%), url(${wall});
 background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
 display: flex;
 flex-direction: column;
@@ -166,6 +170,7 @@ width: 100%;
   align-items: center;
 }
 h1 {
+  color: #1a202c;
   margin: 8% auto;
   font-size: 4rem;
 }

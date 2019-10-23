@@ -28,6 +28,7 @@ img {
     max-height: 50vh;
 }
 h3 {
+    margin: 3%;
     font-size: 1.6rem;
 }
 `;
