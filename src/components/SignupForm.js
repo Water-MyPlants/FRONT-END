@@ -27,10 +27,10 @@ const SignupForm = ({
   // }
   return (
     // SIGN UP Form with validation using Yup for Formik //
-
+    <>
     <div id="signup-form" className="form-container">
       <Form className="form" onSubmit={handleSubmit}>
-        <div className='water-logo'><img src={waterLogo} />
+        <div className='water-logo'><img src={waterLogo} /></div>
         <label>User Name:</label>
         <Field type="text" name="userName" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
@@ -62,6 +62,7 @@ const SignupForm = ({
         Already have an account?
       </Link>
     </div>
+    </>
     //!!! SIGN UP Form with validation using Yup for Formik //
   );
 };
