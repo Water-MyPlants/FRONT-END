@@ -7,6 +7,8 @@ import ProfileCard from "./ProfileCard";
 import PlantCard from "./PlantCard";
 import UploadForm from './UploadForm'
 
+import wall from '../assets/wall.jpeg'
+
 export const PlantList = ({ errors, touched, values, status }) => {
 
   const plantList = [
@@ -28,9 +30,11 @@ export const PlantList = ({ errors, touched, values, status }) => {
   ];
 
   return (
-    <PlantListStyle className="plant-list-wrapper">
+    <>
+      <ProfileStyle className="profile-form-wrapper">
         <ProfileCard />
-        <div className="add-plant-container">
+        <PlantFormStyle className="add-plant-container">
+          <h1>Add your plants here!</h1>
           <Form className="form">
             <label>Nick Name:</label>
             <Field type="text" name="nickName" placeholder="Nick Name" />
@@ -52,14 +56,17 @@ export const PlantList = ({ errors, touched, values, status }) => {
             </button>
           </Form>
           <UploadForm />
+        </PlantFormStyle>
+      </ProfileStyle>
+      <PlantListStyle className="plant-list-container">
+        <h1>Dont forget to water your plants!</h1>
+        <div className='plant-grid'>
+          {plantList
+            ? plantList.map(plant => <PlantCard key={plant.id} plant={plant} />)
+            : null}
         </div>
-      <div className="plant-list-container">
-        <h2>Dont forget to water your plants!</h2>
-        {plantList
-          ? plantList.map(plant => <PlantCard key={plant.id} plant={plant} />)
-          : null}
-      </div>
-    </PlantListStyle>
+      </PlantListStyle>
+    </>
   );
 };
 
@@ -82,12 +89,84 @@ const FormikPlantForm = withFormik({
 //!!! withFormik validation and Yup Error Messages //
 export default FormikPlantForm;
 
-const PlantListStyle = styled.div`
+const ProfileStyle = styled.div`
 display: flex;
-background: white;
-width: 100%;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+background-image: linear-gradient(to bottom, #518999 0%,#CE96A6 100%);
+max-width: 280px;
+width: 28%;
 .add-plant-container {
-  border: 1px solid black;
-  width: 600px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  form {
+    width: 90%;
+    margin: 5% auto 20%;
+  }
+  input {
+    background: transparent;
+    margin: 5% auto;
+    width: 90%;
+  }
+  .add-btn{
+    margin: 5% auto;
+    width: 60%;
+  }
+}
+.upload-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin: 2% auto;
+  button {
+    margin: 3%;
+  }
+}
+`;
+const PlantFormStyle = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+width: 100%;
+h1 {
+  text-align: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px 3px black;
+  border-radius: 4px;
+  label {
+    margin: 2% 0 2% 5%;
+    font-size: 1.6rem;
+  }
+  input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+  }
+}
+
+`;
+const PlantListStyle = styled.section`
+background-image: linear-gradient(to bottom, #99b272 25%, transparent 100%), url(${wall});
+background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+display: flex;
+flex-direction: column;
+width: 100%;
+.plant-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+h1 {
+  margin: 8% auto;
+  font-size: 4rem;
 }
 `;
