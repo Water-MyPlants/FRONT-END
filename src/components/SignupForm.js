@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
@@ -28,13 +28,13 @@ const SignupForm = ({
         <label>User Name:</label>
         <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
-        {touched.userName && errors.userName && (
-          <span className="error">{errors.userName}</span>
+        {touched.username && errors.username && (
+          <span classname="error">{errors.username}</span>
         )}
         <label>Mobile Phone #:</label>
         <Field type="text" name="phoneNumber" placeholder="+1 (123) 456-7890" />
-        {touched.phone && errors.phone && (
-          <span className="error">{errors.phone}</span>
+        {touched.phoneNumber && errors.phoneNumber && (
+          <span className="error">{errors.phoneNumber}</span>
         )}
         <label>Password:</label>
         <Field type="password" name="password" placeholder="Password" />
@@ -46,9 +46,9 @@ const SignupForm = ({
           SIGN UP
         </button>
       </Form>
-      <Link className="form-link" to="/login">
+      <NavLink className="form-link" to="/login">
         Already have an account?
-      </Link>
+      </NavLink>
     </div>
     //!!! SIGN UP Form with validation using Yup for Formik //
   );
