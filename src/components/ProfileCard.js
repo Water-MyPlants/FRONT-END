@@ -22,7 +22,7 @@ max-width: 100%;
 max-height: 50vh;
 text-align: center;
 img {
-    border-radius: 50%;
+    border-radius: 12px;
     margin: 25% auto 10%;
     max-width: 80%;
     max-height: 50vh;
