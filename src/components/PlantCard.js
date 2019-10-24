@@ -14,9 +14,9 @@ const PlantCard = ({ plant, editingPlant, deletePlant }) => {
   return (
     <PlantCardStyle className="plant-card">
       <div className='plant-img' />
-      <h2>NickName: {plant.id}</h2>
-      <h2>Species: {plant.species}</h2>
-      <h2>H20 Frequency: {plant.h2oFrequency}</h2>
+      <h2>{plant.id}</h2>
+      <h2>{plant.species}</h2>
+      <h2>{plant.h2oFrequency}</h2>
       <div className='btn-container'>
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
