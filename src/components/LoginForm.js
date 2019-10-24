@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {attemptLogin} from '../state/actionCreators' 
 import { connect } from 'react-redux'
 
@@ -24,8 +24,8 @@ const LoginForm = ({ errors, touched, values, status, history, login, attemptLog
         <label>User Name:</label>
         <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
-        {touched.userName && errors.userName && (
-          <span className="error">{errors.userName}</span>
+        {touched.username && errors.username && (
+          <span className="error">{errors.username}</span>
         )}
         <label>Password:</label>
         <Field type="password" name="password" placeholder="Password" />
@@ -36,9 +36,9 @@ const LoginForm = ({ errors, touched, values, status, history, login, attemptLog
         <button className="btn" type="submit">
           LOG IN
         </button>
-        <Link className="form-link" to="/signup">
+        <NavLink className="form-link" to="/signup">
         Dont have an account?
-        </Link>
+        </NavLink>
       </Form>
     </div>
     //!!! Login Form with validation using Yup for Formik //
