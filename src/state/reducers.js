@@ -1,16 +1,14 @@
 import * as types from "./actionTypes";
 
-
-
-
-const initialSignupState = {
+const initialState = {
   username: "",
   password: "",
   phoneNumber: "",
-  plantsList: []
+  plantsList: null,
+  // editPlantId: 0
 };
 
-const signupReducer = (state = initialSignupState, action) => {
+const signupReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SIGN_UP:
       return state;
@@ -19,52 +17,45 @@ const signupReducer = (state = initialSignupState, action) => {
         ...state,
         ...action.payload
       };
-      case types.LOGIN:
-        return initialSignupState;
-      case types.ON_LOGIN_INPUT_CHANGE:
-        return {
-          ...state,
-          ...action.payload
-        };
-      case types.ADD_PLANT:
-        return {
-          ...state,
-          plantsList: [...state.plantsList, action.payload]
-        }
-      case types.EDIT_PLANT:
-        return {
-          
-        }
-      default:
-        return state;
-    }
-  };
-  
+    case types.LOGIN:
+      return initialState;
+    case types.ON_LOGIN_INPUT_CHANGE:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case types.ADD_PLANT:
+      return {
+        ...state,
+        plantsList: [...state.plantsList, action.payload],
+
+      };
+    case types.EDIT_PLANT:
+      return {
+        ...state,
+        plantslist: state.plantsList.map(plant =>
+          plant.id === action.payload.id ? action.payload : plant
+        )
+      };
+    case types.DELETE_PLANT:
+      console.log("this is from the delete reducer", action.payload)
+      return {
+        ...state,
+        plantsList: state.plantsList.filter(
+          plant => plant.id !== action.payload
+        )
+      };
+
+    case types.GET_PLANT:
+      console.log("make it into get plant reducer")
+      return {
+        ...state,
+        plantsList: action.payload
+      }
+    default:
+      return state;
+  }
+};
 
 
-
-//     case types.LOGOUT:
-
-// const initialLoadingState = true;
-// const loadingReducer = (state = initialLoadingState, action) => {
-//   switch (action.type) {
-//     case types.LOGOUT:
-//       return initialLoadingState;
-//     case types.SET_LOADING:
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// };
-// const initialPlantsState = [];
-// export const plantsReducer = (state = initialPlantsState, action) => {
-//   switch (action.type) {
-//     case types.LOGOUT:
-//       return initialPlantsState;
-//     case types.SET_PLANTS_LIST:
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// };
 export default signupReducer;

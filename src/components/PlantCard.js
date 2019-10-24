@@ -2,14 +2,17 @@ import React from "react";
 import styled from 'styled-components';
 import grass from '../assets/grass.jpeg';
 import flower from '../assets/flower.jpeg';
+import { connect } from "react-redux";
+import * as actionCreators from "../state/actionCreators";
 
 
-
-const PlantCard = ({ plant, startEditPlant, deletePlant }) => {
+const PlantCard = ({ plant, editPlant, deletePlant }) => {
   const onEdit = e => {
-    startEditPlant(plant);
+    console.log("from the edit button")
+    editPlant(plant);
   };
   const onDelete = e => {
+    console.log("from the delete button")
     deletePlant(plant.id);
   };
   return (
@@ -17,7 +20,7 @@ const PlantCard = ({ plant, startEditPlant, deletePlant }) => {
       <div className='plant-img' />
       <h2>{plant.id}</h2>
       <h3>{plant.species}</h3>
-      <h3>{plant.h3oFrequency}</h3>
+      <h3>{plant.h2oFrequency}</h3>
       <div className='btn-container'>
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
@@ -26,7 +29,11 @@ const PlantCard = ({ plant, startEditPlant, deletePlant }) => {
   );
 };
 
-export default PlantCard;
+export default connect(
+  state => state,
+  actionCreators
+)(PlantCard);
+
 
 const PlantCardStyle = styled.article`
   background-image: linear-gradient(to bottom, transparent 50%, black 100%), url(${grass});

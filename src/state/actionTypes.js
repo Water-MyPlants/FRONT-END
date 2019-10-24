@@ -5,3 +5,6 @@ export const ON_SIGNUP_INPUT_CHANGE = "ON_SIGNUP_INPUT_CHANGE";
 export const ON_LOGIN_INPUT_CHANGE = "ON_LOGIN_INPUT_CHANGE";
 export const EDIT_PLANT = "EDIT_PLANT";
 export const ADD_PLANT = "ADD_PLANT";
+export const DELETE_PLANT = "DELETE_PLANT";
+export const LOGOUT = "LOGOUT";
+export const GET_PLANT = "GET_PLANT";

@@ -3,35 +3,25 @@ import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import * as withAuth from "../helpers/axiosWithAuth";
 import { Link } from "react-router-dom";
-// import {attemptLogin} from '../state/actionCreators' 
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 
+// Login Form with validation using Yup for Formik //
 
-
-
-  
-    // Login Form with validation using Yup for Formik //
-
-export const LoginForm = ({ errors, touched, values, status, history, login, attemptLogin, logout, onLoginInputChange
-  
+export const LoginForm = ({
+  errors,
+  touched,
+  values,
+  status,
+  history,
+  attemptLogin,
+  logout
 }) => {
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    attemptLogin(values);
-    history.push("/plants");
-
-  }
   const onLogin = e => {
     e.preventDefault();
-    if (login.username.length === 0 || login.password.length === 0)
-      return false;
-    attemptLogin(login);
-    history.push("/plants");
+    attemptLogin(values, history);
   };
-  // const onInputChange = e => {
-  //   onLoginInputChange(e.target);
-  // };
+
   const onLogout = () => {
     logout();
     history.push("/");
@@ -40,8 +30,8 @@ export const LoginForm = ({ errors, touched, values, status, history, login, att
     <button onClick={onLogout}>Logout</button>
   ) : (
     <div id="login-form" className="form-container">
-      <Form className="form" onSubmit={handleSubmit}>
-        <div className='water-logo'></div>
+      <Form className="form" onSubmit={onLogin}>
+        <div className="water-logo"></div>
         <label>User Name:</label>
         <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
@@ -58,7 +48,7 @@ export const LoginForm = ({ errors, touched, values, status, history, login, att
           LOG IN
         </button>
         <Link className="form-link" to="/signup">
-        Dont have an account?
+          Dont have an account?
         </Link>
       </Form>
     </div>
