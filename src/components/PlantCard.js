@@ -14,9 +14,9 @@ const PlantCard = ({ plant, editingPlant, deletePlant }) => {
   return (
     <PlantCardStyle className="plant-card">
       <div className='plant-img' />
-      <h2>{plant.id}</h2>
-      <h3>{plant.species}</h3>
-      <h3>{plant.h3oFrequency}</h3>
+      <h2>Big Bertha{plant.nickName}</h2>
+      <h3>Rose{plant.species}</h3>
+      <h3>once a day{plant.h2oFrequency}</h3>
       <div className='btn-container'>
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
@@ -74,13 +74,16 @@ const PlantCardStyle = styled.article`
     background-size: cover;
   }
   h2 {
-    font-size: 1.6rem;
-    text-align: center;
-    color: white; 
-  }
-  h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-align: center;
     color: white;
+    text-shadow: 2px 2px 2px black; 
+  }
+  h3 {
+    margin: 2%;
+    font-size: 1.6rem;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 2px black; 
   }
 `;
