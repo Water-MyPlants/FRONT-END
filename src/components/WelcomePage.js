@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import styled from "styled-components";
 import * as withAuth from "../helpers//axiosWithAuth";
+
+
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import PlantList from "./PlantList";
@@ -29,18 +31,28 @@ const WrapperStyle = styled.div`
   height: 100vh;
   display: flex;
   justify-content: flex-end;
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
+  overflow: hidden;
   .form-container {
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, white 40%, transparent 100%);
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to bottom, transparent 0%, white 100%);
-    opacity: 0.6;
+    opacity: 0.7;
     width: 360px;
     max-width: 60%;
     border-radius: 12px;
-    margin: 5% 5% 0;
+    margin: 8% 8% auto;
+    animation: moveUp 1.5s ease-in-out 0.2s backwards;
+    @keyframes moveUp {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0px);
+        opacity: 0.7;
+      }
+    }
     @media (max-width: 768px) {
       max-width: 100%;
       margin: 3% 3% 0;
@@ -57,6 +69,7 @@ const WrapperStyle = styled.div`
         margin: 1% 0 0 5%;
       }
       input {
+        background: transparent;
         margin-left: 5%;
         padding-left: 2%;
         width: 90%;
@@ -79,27 +92,41 @@ const WrapperStyle = styled.div`
       }
     }
     .form-link {
+      color: black;
       font-size: 1.4rem;
       margin: 0 auto;
     }
     .water-logo{
-      max-width: 150px;
-      display: flex;
-      justify-content: center;
-      background-image: linear-gradient(to bottom, #99b272 0%, transparent 100%), url(${waterLogo});
+      margin: 3% auto;
+      width: 175px;
+      height: 175px;
+      max-width: 100%;
+      max-height: 100%;
+      background-image: url(${waterLogo});
       background-repeat: no-repeat;
-      background-position: bottom;
-      background-size: cover;
-      .water-img {
-        max-width: 50%;
-        margin: 5% auto;
+      background-position:center;
+      background-size: contain;
+      animation: fadeIn 2s ease-in-out 0.2s backwards;
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
     }
   }
   #login-form {
     height: 60%;
+    @media(max-height: 800px) {
+      height: 80%;
+    }
   }
   #signup-form {
     height: 70%;
+    @media(max-height: 800px) {
+      height: 90%;
+    }
   }
 `;

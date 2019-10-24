@@ -96,7 +96,14 @@ justify-content: flex-start;
 align-items: flex-start;
 background-image: linear-gradient(to bottom, #518999 0%, #CE96A6 100%);
 max-width: 280px;
-width: 28%;
+width: 30%;
+@media(max-width: 1000px) {
+  width: 40%;
+}
+@media(max-width: 768px) {
+  max-width: 100%;
+  width: 50%;
+}
 .add-plant-container {
   display: flex;
   justify-content: center;
@@ -156,22 +163,31 @@ h1 {
 
 `;
 const PlantListStyle = styled.section`
-background-image: linear-gradient(to bottom, #99b272 0%, transparent 100%), url(${wall});
-background-repeat: no-repeat;
+  background-image: linear-gradient(to bottom, #EEEEED 0%, transparent 100%), url(${wall});
+  background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
-display: flex;
-flex-direction: column;
-width: 100%;
-.plant-grid {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-}
-h1 {
-  color: #1a202c;
-  margin: 8% auto;
-  font-size: 4rem;
-}
+  flex-direction: column;
+  width: 100%;
+  overflow: auto;
+  @media(max-width: 768px) {
+    height: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+  .plant-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  h1 {
+    color: #1a202c;
+    margin: 8% auto;
+    font-size:3.6rem;
+    @media(max-width: 768px) {
+      font-size: 3rem;
+    }
+  }
 `;

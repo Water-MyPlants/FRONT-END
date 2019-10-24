@@ -43,6 +43,12 @@ const PlantCardStyle = styled.article`
   margin: 3%;
   width: 300px;
   max-width: 25%;
+  @media(max-width: 1200px) {
+      max-width: 40%;
+  }
+  @media(max-width: 768px) {
+    max-width: 100%;
+  }
   .btn-container {
     display: flex;
     justify-content: center;
