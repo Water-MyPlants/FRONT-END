@@ -6,7 +6,8 @@ import * as types from "./actionTypes";
 const initialSignupState = {
   username: "",
   password: "",
-  phoneNumber: ""
+  phoneNumber: "",
+  plantsList: []
 };
 
 const signupReducer = (state = initialSignupState, action) => {
@@ -25,6 +26,15 @@ const signupReducer = (state = initialSignupState, action) => {
           ...state,
           ...action.payload
         };
+      case types.ADD_PLANT:
+        return {
+          ...state,
+          plantsList: [...state.plantsList, action.payload]
+        }
+      case types.EDIT_PLANT:
+        return {
+          
+        }
       default:
         return state;
     }

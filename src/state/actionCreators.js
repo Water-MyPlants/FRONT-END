@@ -10,18 +10,19 @@ export const userSignUpRequest = userData => dispatch => {
       axios.post(registerApi, userData)
       .then(({ data }) => {
         dispatch({ type: types.SIGN_UP });
-        localStorage.setItem('login_token', data.payload);
+        localStorage.setItem('token', data.token);
     })
     .catch(err => console.log(err));
 };
 
 export const attemptLogin = login => dispatch => {
+	console.log(login)
   axios
     .post(loginApi, login)
     .then(({ data }) => {
       console.log("logged in", data);
+      localStorage.setItem("token", data.token);
       dispatch({ type: types.LOGIN });
-      localStorage.setItem("token", data.payload);
     })
     .catch(err => console.log(err));
 };
