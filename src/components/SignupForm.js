@@ -29,7 +29,7 @@ const SignupForm = ({
         <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
         {touched.username && errors.username && (
-          <span classname="error">{errors.username}</span>
+          <span className="error">{errors.username}</span>
         )}
         <label>Mobile Phone #:</label>
         <Field type="text" name="phoneNumber" placeholder="+1 (123) 456-7890" />

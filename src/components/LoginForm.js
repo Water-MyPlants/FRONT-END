@@ -25,7 +25,7 @@ const LoginForm = ({ errors, touched, values, status, history, login, attemptLog
         <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
         {touched.username && errors.username && (
-          <span classname="error">{errors.username}</span>
+          <span className="error">{errors.username}</span>
         )}
         <label>Password:</label>
         <Field type="password" name="password" placeholder="Password" />
