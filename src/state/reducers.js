@@ -1,12 +1,15 @@
 import * as types from "./actionTypes";
 
+
+
+
 const initialSignupState = {
   username: "",
   password: "",
   phoneNumber: ""
 };
 
-export const signupReducer = (state = initialSignupState, action) => {
+const signupReducer = (state = initialSignupState, action) => {
   switch (action.type) {
     case types.SIGN_UP:
       return state;
@@ -15,76 +18,43 @@ export const signupReducer = (state = initialSignupState, action) => {
         ...state,
         ...action.payload
       };
-    default:
-      return state;
-  }
-};
+      case types.LOGIN:
+        return initialSignupState;
+      case types.ON_LOGIN_INPUT_CHANGE:
+        return {
+          ...state,
+          ...action.payload
+        };
+      default:
+        return state;
+    }
+  };
+  
 
-const initialLoginState = {
-  username: "",
-  password: ""
-};
-export const loginReducer = (state = initialLoginState, action) => {
-  switch (action.type) {
-    case types.LOGOUT:
-    case types.LOGIN:
-      return initialLoginState;
-    case types.ON_LOGIN_INPUT_CHANGE:
-      return {
-        ...state,
-        ...action.payload
-      };
-    default:
-      return state;
-  }
-};
-const initialLoadingState = true;
-export const loadingReducer = (state = initialLoadingState, action) => {
-  switch (action.type) {
-    case types.LOGOUT:
-      return initialLoadingState;
-    case types.SET_LOADING:
-      return action.payload;
-    default:
-      return state;
-  }
-};
 
-const initialPlantsState = [];
-export const plantsReducer = (state = initialPlantsState, action) => {
-  switch (action.type) {
-    case types.LOGOUT:
-      return initialPlantsState;
-    case types.SET_PLANTS_LIST:
-      return action.payload;
-    default:
-      return state;
-  }
-};
 
-const initialAddPlantFormState = {
-	id: null,
-	name: "",
-	age: "",
-	email: "",
-};
-export const addPlantReducer = (state = initialAddPlantFormState, action) => {
-	switch (action.type) {
-		case types.LOGOUT:
-		case types.SET_PLANTS_LIST:
-			return initialAddPlantFormState;
-		case types.ON_PLANTS_INPUT_CHANGE:
-			return {
-				...state,
-				...action.payload
-			}
-		case types.EDIT_PLANT:
-			return {
-				...state,
-				...action.payload
-			}
-			
-		default:
-			return state;
-  }
-}
+//     case types.LOGOUT:
+
+// const initialLoadingState = true;
+// const loadingReducer = (state = initialLoadingState, action) => {
+//   switch (action.type) {
+//     case types.LOGOUT:
+//       return initialLoadingState;
+//     case types.SET_LOADING:
+//       return action.payload;
+//     default:
+//       return state;
+//   }
+// };
+// const initialPlantsState = [];
+// export const plantsReducer = (state = initialPlantsState, action) => {
+//   switch (action.type) {
+//     case types.LOGOUT:
+//       return initialPlantsState;
+//     case types.SET_PLANTS_LIST:
+//       return action.payload;
+//     default:
+//       return state;
+//   }
+// };
+export default signupReducer;

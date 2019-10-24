@@ -1,30 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import * as reducers from './state/reducers';
+import reducer from './state/reducers';
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-const monsterReducer = combineReducers({ 
-  userData: reducers.signupReducer,
-  login: reducers.loginReducer,
-  isLoading: reducers.loadingReducer,
-  plantsList: reducers.plantsReducer,
-  addPlant: reducers.addPlantReducer
+// const store = createStore(
+//   reducer,
+//   {},
+//   compose(
+//     applyMiddleware(thunk),
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+//   ),
+// );
 
-});
-
-const store = createStore(
-  monsterReducer,
-  {},
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  ),
-);
+let store = createStore(reducer,applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>

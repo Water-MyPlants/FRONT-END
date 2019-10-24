@@ -1,15 +1,15 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 import WelcomePage from "./components/WelcomePage";
-import background from "./assets/background.jpeg";
+
 
 function App() {
   return (
-    <AppStyle className="App">
+    <div className="App">
       <GlobalStyle />
       <WelcomePage />
-    </AppStyle>
+    </div>
   );
 }
 
@@ -31,14 +31,12 @@ body {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  font-family: 'Permanent Marker', cursive;
+  }
+  h1, h2, h3, label {
+    font-family: 'Roboto', sans-serif;
+  }
+  small a {
+    font-family: 'Roboto Slab', serif;
   }
 `;
-const AppStyle = styled.div`
-  background-image: url(${background});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-`;
+
