@@ -15,8 +15,8 @@ const PlantCard = ({ plant, editingPlant, deletePlant }) => {
     <PlantCardStyle className="plant-card">
       <div className='plant-img' />
       <h2>{plant.id}</h2>
-      <h2>{plant.species}</h2>
-      <h2>{plant.h2oFrequency}</h2>
+      <h3>{plant.species}</h3>
+      <h3>{plant.h3oFrequency}</h3>
       <div className='btn-container'>
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
@@ -59,8 +59,8 @@ const PlantCardStyle = styled.article`
   .plant-img {
     margin: 0 auto;
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     max-width: 100%;
     background-image: url(${flower});
     background-repeat: no-repeat;
@@ -68,6 +68,7 @@ const PlantCardStyle = styled.article`
     background-size: cover;
   }
   h2 {
+    text-align: center;
     color: white; 
   }
 `;

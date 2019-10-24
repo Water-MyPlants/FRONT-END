@@ -32,7 +32,7 @@ body {
   font: inherit;
   vertical-align: baseline;
   }
-  h1, label {
+  h1, h2, h3, label {
     font-family: 'Roboto', sans-serif;
   }
   small a {
