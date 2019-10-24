@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 import ProfileCard from "./ProfileCard";
 import PlantCard from "./PlantCard";
-import UploadForm from './UploadForm'
 
 import wall from '../assets/wall.jpeg'
 
@@ -55,7 +54,6 @@ export const PlantList = ({ errors, touched, values, status }) => {
               ADD PLANT
             </button>
           </Form>
-          <UploadForm />
         </PlantFormStyle>
       </ProfileStyle>
       <PlantListStyle className="plant-list-container">
@@ -103,6 +101,10 @@ width: 30%;
 @media(max-width: 768px) {
   max-width: 100%;
   width: 50%;
+}
+@media(max-width: 500px) {
+  max-width: 100%;
+  width: 90%;
 }
 .add-plant-container {
   display: flex;
@@ -188,6 +190,12 @@ const PlantListStyle = styled.section`
     font-size:3.6rem;
     @media(max-width: 768px) {
       font-size: 3rem;
+    }
+    @media(max-width: 666px) {
+      font-size: 2rem;
+    }
+    @media(max-width: 500px) {
+      font-size: 1.8rem;
     }
   }
 `;
