@@ -6,6 +6,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import PlantList from "./PlantList";
 import background from "../assets/background.jpeg";
+import waterLogo from '../assets/waterLogo.png'
 
 export default function WelcomePage() {
   return (
@@ -34,7 +35,7 @@ const WrapperStyle = styled.div`
   .form-container {
     display: flex;
     flex-direction: column;
-    background: white;
+    background-image: linear-gradient(to bottom, transparent 0%, white 100%);
     opacity: 0.6;
     width: 360px;
     max-width: 60%;
@@ -82,9 +83,14 @@ const WrapperStyle = styled.div`
       margin: 0 auto;
     }
     .water-logo{
+      max-width: 150px;
       display: flex;
       justify-content: center;
-      img {
+      background-image: linear-gradient(to bottom, #99b272 0%, transparent 100%), url(${waterLogo});
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: cover;
+      .water-img {
         max-width: 50%;
         margin: 5% auto;
       }

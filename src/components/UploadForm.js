@@ -25,7 +25,7 @@ export default class UploadForm extends Component {
 
     render() {
         return (
-            <div className='upload-contaniner'>
+            <div className='upload-container'>
           <input 
           style={{display: 'none'}}
           type='file' 

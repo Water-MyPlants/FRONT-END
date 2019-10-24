@@ -8,7 +8,6 @@ export const userSignUpRequest = userData => dispatch => {
 	console.log('in action creator',userData)
       axios.post(registerApi, userData)
       .then(({ data }) => {
-        debugger
         dispatch({ type: types.SIGN_UP });
         localStorage.setItem('login_token', data.payload);
     })

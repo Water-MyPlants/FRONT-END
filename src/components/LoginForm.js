@@ -7,10 +7,6 @@ import { connect } from 'react-redux'
 
 
 
-
-import waterLogo from '../assets/waterLogo.png';
-
-
 const LoginForm = ({ errors, touched, values, status, history, login, attemptLogin, logout }) => {
 
   const handleSubmit = (e) =>{
@@ -24,7 +20,7 @@ const LoginForm = ({ errors, touched, values, status, history, login, attemptLog
 
     <div id="login-form" className="form-container">
       <Form className="form" onSubmit={handleSubmit}>
-        <div className='water-logo'><img alt='water my plants logo' src={waterLogo} /></div>
+        <div className='water-logo'></div>
         <label>User Name:</label>
         <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
