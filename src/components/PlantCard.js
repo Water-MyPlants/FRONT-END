@@ -74,7 +74,13 @@ const PlantCardStyle = styled.article`
     background-size: cover;
   }
   h2 {
+    font-size: 1.6rem;
     text-align: center;
     color: white; 
+  }
+  h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
   }
 `;
