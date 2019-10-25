@@ -5,6 +5,7 @@ const initialState = {
   password: "",
   phoneNumber: "",
   plantsList: null,
+  editingPlantId: 0,
 };
 
 const signupReducer = (state = initialState, action) => {
@@ -45,7 +46,7 @@ const signupReducer = (state = initialState, action) => {
     case types.EDIT_PLANT:
       return {
         ...state,
-        plantslist: state.plantsList.map(plant =>
+        plantsList: state.plantsList.map(plant =>
           plant.id === action.payload.id ? action.payload : plant
         )
       };
@@ -61,6 +62,12 @@ const signupReducer = (state = initialState, action) => {
       return {
         ...state,
         plantsList: action.payload
+      }
+
+    case types.START_EDIT_PLANT:
+      return {
+        ...state,
+        editingPlantId: action.payload
       }
     default:
       return state;

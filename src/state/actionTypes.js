@@ -10,3 +10,4 @@ export const LOGOUT = "LOGOUT";
 export const GET_PLANT = "GET_PLANT";
 export const EDIT_USER = "EDIT_USER";
 export const GET_USER = "GET_USER";
+export const START_EDIT_PLANT = "START_EDIT_PLANT";

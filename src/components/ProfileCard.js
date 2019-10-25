@@ -13,9 +13,10 @@ const ProfileCard = ({ user, username, phoneNumber }) => {
     return (
         <ProfileCardStyle className='profile-container'>
             <img alt='profile thumbnail' src={profileImg}/>
-            <h3 className='profile-username'>{username}</h3>
-            <h3 className='profile-phonenumber'>{phoneNumber}</h3>
+            <h3 className='profile-username'>User{username}</h3>
+            <h3 className='profile-phonenumber'>Phone{phoneNumber}</h3>
             {/* <button onclick={onUserEdit}>Edit</button> */}
+            <input type="text" name="username"/>
         </ProfileCardStyle>
     );
 };

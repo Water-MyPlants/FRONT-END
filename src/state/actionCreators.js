@@ -32,15 +32,16 @@ export const logout = () => {
 };
 
 export const setPlantsList = plant => {
-  return { type: types.ADD_PLANT, payload: plant.id };
+  return { type: types.ADD_PLANT, payload: plant };
 };
 
 export const addPlantToList = plant => dispatch => {
   withAuth
     .axiosWithAuth()
     .post("https://build-week-4.herokuapp.com/api/plants", plant)
-    .then(({ data }) => {
-      data = plant.id ? dispatch(setPlantsList(plant)) : null;
+    .then(({ data }) => { // NEED AT LEAST ID OF NEW PLANT FROM BACKEND
+     plant.id = data; 
+      dispatch(setPlantsList(plant));
     })
     .catch(err => console.log(err));
 };
@@ -58,16 +59,19 @@ export const getPlantList = () => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const startEditPlant = plant => {
-  return { type: types.EDIT_PLANT, payload: plant };
+export const startEditPlant = plantId => {
+  return { type: types.START_EDIT_PLANT, payload: plantId };
 };
 
 export const editPlant = plant => dispatch => {
+  console.log("called editPlant", plant)
   withAuth
     .axiosWithAuth()
     .put(`https://build-week-4.herokuapp.com/api/plants/${plant.id}`, plant)
     .then(({ data }) => {
-      dispatch(startEditPlant(data));
+      dispatch({ type: types.EDIT_PLANT, payload: plant });
+      // stops editing and allows adding plants again
+      dispatch({ type: types.START_EDIT_PLANT, payload: 0 });
     })
     .catch(err => console.log(err));
 };
@@ -92,7 +96,7 @@ export const getSingleUser = user => dispatch => {
     .get("https://build-week-4.herokuapp.com/api/user/single_user")
     .then(data => {
       console.log("single user data", data);
-      dispatch({ type: types.GET_USER, user });
+      dispatch({ type: types.GET_USER, payload: user });
     });
 };
 

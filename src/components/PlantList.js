@@ -11,27 +11,39 @@ import * as actionCreators from "../state/actionCreators";
 
 export const PlantList = ({
   errors,
-  plants,
+  plantsList,
   touched,
   values,
   status,
   addPlantToList,
-  getPlantList
+  editPlant,
+  getPlantList,
+  setValues,
+  resetForm,
+  editingPlantId
 }) => {
   const handleSubmit = e => {
     e.preventDefault();
-    addPlantToList(values);
-    
+    if(editingPlantId > 0) {
+      editPlant(values);
+    } else {
+      addPlantToList(values);
+    }
+    resetForm();
   };
 
-  useEffect( ()=> {
+  useEffect(() => {
     getPlantList();
   }, []);
- if (!plants){
-   return (
-     <h1>Loading...</h1>
-   )
- }
+  useEffect(() => {
+    if(editingPlantId > 0) {
+      setValues(plantsList.find(plant => plant.id === editingPlantId));
+    }
+  }, [editingPlantId]);
+  console.log(plantsList);
+  if (!plantsList) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <>
       <ProfileStyle className="profile-form-wrapper">
@@ -68,9 +80,9 @@ export const PlantList = ({
       <PlantListStyle className="plant-list-container">
         <h1>Dont forget to water your plants!</h1>
         <div className="plant-grid">
-
-          {plants.map(plant => <PlantCard key={plant.id} plant={plant} />
-          )}
+          {plantsList.map(plant => (
+            <PlantCard key={plant.id} plant={plant} />
+          ))}
         </div>
       </PlantListStyle>
     </>
@@ -93,11 +105,7 @@ const FormikPlantForm = withFormik({
   })
 })(PlantList);
 
-const mapStateToProps = state => {
-  return {
-    plants: state.plantsList
-  };
-};
+const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
