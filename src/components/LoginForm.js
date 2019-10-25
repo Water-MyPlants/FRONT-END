@@ -20,7 +20,7 @@ const LoginForm = ({ errors, touched, values, status, history, login, attemptLog
     history.push("/");
   };
   return withAuth.isLoggedIn() ? (
-    <button onClick={onLogout}>Logout</button>
+    <button className='logout-btn'onClick={onLogout}>Logout</button>
   ) : (
     <div id="login-form" className="form-container">
       <Form className="form" onSubmit={onLogin}>

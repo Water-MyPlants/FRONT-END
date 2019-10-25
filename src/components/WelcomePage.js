@@ -32,6 +32,15 @@ const WrapperStyle = styled.div`
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
+  .logout-btn {
+    background: #518999;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    margin: 25% auto;
+    height: 30px;
+    width: 60px;
+  }
   .form-container {
     overflow: hidden;
     background-image: linear-gradient(to bottom, white 40%, transparent 100%);

@@ -50,19 +50,20 @@ export const PlantList = ({
         <ProfileCard />
         <PlantFormStyle className="add-plant-container">
           <h1>Add your plants here!</h1>
-          <Form className="form" onSubmit={handleSubmit}>
+          <Form className="form plant-form" onSubmit={handleSubmit}>
             <label>Nick Name:</label>
-            <Field type="text" name="nickname" placeholder="Nick Name" />
+            <Field className='form-input' type="text" name="nickname" placeholder="Nick Name" />
             {touched.nickname && errors.nickname && (
               <span className="error">{errors.nickname}</span>
             )}
             <label>Species:</label>
-            <Field type="text" name="species" placeholder="Species" />
+            <Field className='form-input' type="text" name="species" placeholder="Species" />
             {touched.species && errors.species && (
               <span className="error">{errors.species}</span>
             )}
             <label>H2O Frequency:</label>
             <Field
+              className='form-input'
               type="text"
               name="h2oFrequency"
               placeholder="H20 Frequency"
@@ -115,7 +116,6 @@ const ProfileStyle = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-align-items: flex-start;
 background-image: linear-gradient(to bottom, #518999 0%, #CE96A6 100%);
 max-width: 280px;
 width: 30%;
@@ -132,11 +132,11 @@ width: 30%;
 }
 .add-plant-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   height: 100%;
   form {
     width: 90%;
-    margin: 5% auto 20%;
+    margin: 5% auto;
   }
   input {
     background: transparent;
@@ -164,15 +164,17 @@ width: 30%;
 `;
 const PlantFormStyle = styled.div`
 display: flex;
-flex-direction: column;
 justify-content: flex-end;
+flex-direction: column;
 width: 100%;
 h1 {
   text-align: center;
 }
 .form {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
   box-shadow: 1px 1px 3px black;
   border-radius: 4px;
   label {
