@@ -24,20 +24,22 @@ const ProfileCard = ({
       <img alt="profile thumbnail" src={waterLogo} />
       <h3 className="profile-username">User: {username}</h3>
       <h3 className="profile-phonenumber">Phone: {phoneNumber}</h3>{" "}
-      <div>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <input
-          type="text"
-          name="phoneNumber"
-          value={phoneNumber}
-          onChange={e => setPhoneNumber(e.target.value)}
-        />
-        <button onClick={onUserEdit}>Edit Profile</button>
+      <div className='profile-info'>
+        <form>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+          <input
+            type="text"
+            name="phoneNumber"
+            value={phoneNumber}
+            onChange={e => setPhoneNumber(e.target.value)}
+          />
+        </form>
+        <button className='add-btn' onClick={onUserEdit}>Edit Profile</button>
       </div>
     </ProfileCardStyle>
   );
@@ -50,7 +52,7 @@ export default connect(
 
 const ProfileCardStyle = styled.aside`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   max-width: 100%;
   max-height: 50vh;
@@ -64,5 +66,22 @@ const ProfileCardStyle = styled.aside`
   h3 {
     margin: 3%;
     font-size: 1.6rem;
+  }
+  input {
+    margin: 3%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    width: 90%;
+  }
+  .add-btn{
+    margin: 5% auto;
+    width: 60%;
+    background: #518999;
+    color: white;
+    border-radius: 8px;
+    border: none;
   }
 `;
