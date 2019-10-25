@@ -9,19 +9,13 @@ import { NavLink } from "react-router-dom";
 
 // Login Form with validation using Yup for Formik //
 
-const LoginForm = ({ errors, touched, values, status, history, login, attemptLogin, logout }) => {
+const LoginForm = ({ errors, touched, values, status, history, login, attemptLogin, }) => {
   const onLogin = e => {
     e.preventDefault();
     attemptLogin(values, history);
   };
 
-  const onLogout = () => {
-    logout();
-    history.push("/");
-  };
-  return withAuth.isLoggedIn() ? (
-    <button onClick={onLogout}>Logout</button>
-  ) : (
+  return (
     <div id="login-form" className="form-container">
       <Form className="form" onSubmit={onLogin}>
         <div className="water-logo"></div>
