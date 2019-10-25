@@ -27,9 +27,7 @@ export const PlantList = ({
     if(editingPlantId > 0) {
       editPlant(values);
     } else {
-      const { id, ...rest} = values;
-      console.log(rest)
-      addPlantToList(rest);
+      addPlantToList(values);
     }
     resetForm();
   };

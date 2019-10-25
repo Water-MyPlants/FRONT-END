@@ -20,8 +20,12 @@ export const attemptLogin = (login, history) => dispatch => {
     .post(loginApi, login)
     .then(({ data }) => {
       localStorage.setItem("token", data.token);
-      dispatch({ type: types.LOGIN });
-      history.push("/plants");
+      getSingleUser().then(({data}) => {
+        dispatch({ type: types.LOGIN });
+        localStorage.setItem("user", JSON.stringify({username: data.username, phoneNumber: data.phoneNumber}));
+        history.push("/plants");
+        dispatch({ type: types.GET_USER, payload: data });
+      });
     })
     .catch(err => console.log(err));
 };
@@ -40,11 +44,11 @@ export const addPlantToList = plant => dispatch => {
     .axiosWithAuth()
     .post("https://build-week-4.herokuapp.com/api/plants", plant)
     .then(({ data }) => { // NEED AT LEAST ID OF NEW PLANT FROM BACKEND
-     plant.id = data; 
       dispatch(setPlantsList(plant));
     })
     .catch(err => console.log(err));
 };
+
 
 export const displayPlantsList = list => {
   return { type: types.GET_PLANT, payload: list };
@@ -90,14 +94,10 @@ export const deletePlant = id => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const getSingleUser = user => dispatch => {
-  withAuth
+export const getSingleUser = () => {
+  return withAuth
     .axiosWithAuth()
-    .get("https://build-week-4.herokuapp.com/api/user/single_user")
-    .then(data => {
-      console.log("single user data", data);
-      dispatch({ type: types.GET_USER, payload: user });
-    });
+    .get("https://build-week-4.herokuapp.com/api/user/single_user");
 };
 
 export const startEditUser = user => {
@@ -108,6 +108,7 @@ export const editUser = user => dispatch => {
     .axiosWithAuth()
     .put(`https://build-week-4.herokuapp.com/api/user/`, user)
     .then(({ data }) => {
+      localStorage.setItem("user", JSON.stringify({username: data.username, phoneNumber: data.phoneNumber}));
       dispatch(startEditUser(data));
     })
     .catch(err => console.log(err));
