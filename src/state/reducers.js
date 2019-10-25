@@ -29,6 +29,13 @@ const signupReducer = (state = initialState, action) => {
           plantsList: [...state.plantsList, action.payload],
           
         };
+        case types.GET_USER:
+        return {
+          ...state,
+          username: action.payload,
+          phoneNumber: action.payload
+        };
+
       case types.EDIT_USER:
         return {
           ...state,
@@ -43,7 +50,6 @@ const signupReducer = (state = initialState, action) => {
         )
       };
     case types.DELETE_PLANT:
-      console.log("this is from the delete reducer", action.payload)
       return {
         ...state,
         plantsList: state.plantsList.filter(
@@ -52,7 +58,6 @@ const signupReducer = (state = initialState, action) => {
       };
 
     case types.GET_PLANT:
-      console.log("make it into get plant reducer")
       return {
         ...state,
         plantsList: action.payload

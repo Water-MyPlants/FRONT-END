@@ -1,25 +1,30 @@
 import React from 'react';
+import { connect } from "react-redux";
 import profileImg from '../assets/profile-img.jpg';
 import styled from 'styled-components'
-import { editUser } from '../state/actionCreators';
+import * as actionCreators from '../state/actionCreators';
 
-const ProfileCard = ({ user }) => {
+const ProfileCard = ({ user, username, phoneNumber }) => {
 
-    const onUserEdit = e => {
-        e.preventDefault();
-        editUser(user)
-    }
+    // const onUserEdit = e => {
+    //     e.preventDefault();
+    //     editUser(user)
+    // }
     return (
         <ProfileCardStyle className='profile-container'>
             <img alt='profile thumbnail' src={profileImg}/>
-            <h3 className='profile-phone'>+1 (509)991-1865</h3>
-            <h3 className='profile-password'>Nunya</h3>
-            <button onclick={onUserEdit}>Edit</button>
+            <h3 className='profile-username'>{username}</h3>
+            <h3 className='profile-phonenumber'>{phoneNumber}</h3>
+            {/* <button onclick={onUserEdit}>Edit</button> */}
         </ProfileCardStyle>
     );
 };
 
-export default ProfileCard;
+export default connect(
+    state => state,
+    actionCreators
+  )(ProfileCard);
+  
 
 const ProfileCardStyle = styled.aside`
 display: flex;

@@ -8,11 +8,10 @@ import * as actionCreators from "../state/actionCreators";
 
 const PlantCard = ({ plant, editPlant, deletePlant }) => {
   const onEdit = e => {
-    console.log("from the edit button", plant)
+    console.log("called edit function", plant)
     editPlant(plant);
   };
   const onDelete = e => {
-    console.log("from the delete button")
     deletePlant(plant.id);
   };
   
@@ -23,6 +22,7 @@ const PlantCard = ({ plant, editPlant, deletePlant }) => {
       <h3>{plant.species}</h3>
       <h3>{plant.h2oFrequency}</h3>
       <div className='btn-container'>
+        
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
       </div>

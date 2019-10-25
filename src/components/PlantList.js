@@ -18,7 +18,6 @@ export const PlantList = ({
   addPlantToList,
   getPlantList
 }) => {
-  // console.log(plants)
   const handleSubmit = e => {
     e.preventDefault();
     addPlantToList(values);
