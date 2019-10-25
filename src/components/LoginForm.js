@@ -2,21 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import * as withAuth from "../helpers/axiosWithAuth";
-import { Link } from "react-router-dom";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
+import { NavLink } from "react-router-dom";
+
 
 // Login Form with validation using Yup for Formik //
 
-export const LoginForm = ({
-  errors,
-  touched,
-  values,
-  status,
-  history,
-  attemptLogin,
-  logout
-}) => {
+const LoginForm = ({ errors, touched, values, status, history, login, attemptLogin, logout }) => {
   const onLogin = e => {
     e.preventDefault();
     attemptLogin(values, history);
@@ -35,8 +28,8 @@ export const LoginForm = ({
         <label>User Name:</label>
         <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
-        {touched.userName && errors.userName && (
-          <span className="error">{errors.userName}</span>
+        {touched.username && errors.username && (
+          <span className="error">{errors.username}</span>
         )}
         <label>Password:</label>
         <Field type="password" name="password" placeholder="Password" />
@@ -47,9 +40,10 @@ export const LoginForm = ({
         <button className="btn" type="submit">
           LOG IN
         </button>
-        <Link className="form-link" to="/signup">
-          Dont have an account?
-        </Link>
+  
+        <NavLink className="form-link" to="/signup">
+        Dont have an account?
+        </NavLink>
       </Form>
     </div>
   );
