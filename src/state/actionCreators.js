@@ -70,25 +70,28 @@ export const startEditPlant = plant => {
 	return { type: types.EDIT_PLANT, payload: plant };
 }
 
-export const startDeletePlant = plant => {
-	return {type: types.DELETE_PLANT, payload: plant}
-}
-
 export const editPlant = plant => dispatch => {
+	console.log("edit action check", plant.id)
 	withAuth.axiosWithAuth().put(`https://build-week-4.herokuapp.com/api/plants/${plant.id}`, plant)
 		.then(({ data }) => {
+			console.log("what sort of data", data)
 			dispatch(startEditPlant(data));
 		})
 		.catch(err => console.log(err))
 }
+
+export const startDeletePlant = plant => {
+	return {type: types.DELETE_PLANT, payload: plant}
+}
+
 export const deletePlant = id => dispatch => {
 	console.log("what is id", id)
-	dispatch(startDeletePlant(id));
-// 	withAuth.axiosWithAuth().delete(`https://build-week-4.herokuapp.com/api/plants/${id}`)
-// 		.then(() => {
-// 			dispatch(startDeletePlant(id));
-// 		})
-// 		.catch(err => console.log(err))
+	// dispatch(startDeletePlant(id));
+	withAuth.axiosWithAuth().delete(`https://build-week-4.herokuapp.com/api/plants/${id}`)
+		.then(() => {
+			dispatch(startDeletePlant(id));
+		})
+		.catch(err => console.log(err))
 }
 export const startEditUser = user => {
 	return { type: types.EDIT_USER, payload: user };

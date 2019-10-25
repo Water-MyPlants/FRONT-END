@@ -8,13 +8,14 @@ import * as actionCreators from "../state/actionCreators";
 
 const PlantCard = ({ plant, editPlant, deletePlant }) => {
   const onEdit = e => {
-    console.log("from the edit button")
+    console.log("from the edit button", plant)
     editPlant(plant);
   };
   const onDelete = e => {
     console.log("from the delete button")
     deletePlant(plant.id);
   };
+  
   return (
     <PlantCardStyle className="plant-card">
       <div className='plant-img' />
