@@ -6,14 +6,13 @@ import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
 
-const PlantCard = ({ plant, editPlant, deletePlant }) => {
+const PlantCard = ({ plant, startEditPlant, deletePlant }) => {
   const onEdit = e => {
-    console.log("called edit function", plant)
-    editPlant(plant);
+    startEditPlant(plant.id);
   };
   const onDelete = e => {
     deletePlant(plant.id);
-  };
+  }; 
   
   return (
     <PlantCardStyle className="plant-card">

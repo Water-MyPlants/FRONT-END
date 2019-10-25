@@ -1,10 +1,13 @@
 import * as types from "./actionTypes";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 const initialState = {
-  username: "",
+  username: user ? user.username : "",
   password: "",
-  phoneNumber: "",
-  plantsList: null,
+  phoneNumber: user ? user.phoneNumber : "",
+  plantsList: [],
+  editingPlantId: 0,
 };
 
 const signupReducer = (state = initialState, action) => {
@@ -26,26 +29,27 @@ const signupReducer = (state = initialState, action) => {
       case types.ADD_PLANT:
         return {
           ...state,
-          plantsList: [...state.plantsList, action.payload],
+          plantsList: [action.payload, ...state.plantsList],
           
         };
         case types.GET_USER:
         return {
           ...state,
-          username: action.payload,
-          phoneNumber: action.payload
-        };
+          username: action.payload.username,
+          phoneNumber: action.payload.phoneNumber
+        }; 
+
 
       case types.EDIT_USER:
         return {
           ...state,
-          username: state.username !== action.payload ? action.payload : state,
-          phoneNumber: state.phoneNumber !== action.payload ? action.payload : state,
+          username: action.payload.username,
+          phoneNumber: action.payload.phoneNumber,
         }
     case types.EDIT_PLANT:
       return {
         ...state,
-        plantslist: state.plantsList.map(plant =>
+        plantsList: state.plantsList.map(plant =>
           plant.id === action.payload.id ? action.payload : plant
         )
       };
@@ -61,6 +65,12 @@ const signupReducer = (state = initialState, action) => {
       return {
         ...state,
         plantsList: action.payload
+      }
+
+    case types.START_EDIT_PLANT:
+      return {
+        ...state,
+        editingPlantId: action.payload
       }
     default:
       return state;
