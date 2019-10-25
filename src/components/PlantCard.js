@@ -22,12 +22,28 @@ const PlantCard = ({ plant, editPlant, deletePlant }) => {
       <h3>{plant.species}</h3>
       <h3>{plant.h2oFrequency}</h3>
       <div className='btn-container'>
-        
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
       </div>
+      {/* {plant && (
+        <form onSubmit={onEdit}>
+          <label>
+            Nick Name:
+            <input
+              onChange={}
+              value={}
+            />
+          </label>
+          <label>
+            Species:
+            <input
+              onChange={}
+              value={}
+            />
+          </label> */}
+      
     </PlantCardStyle>
-  );
+  )
 };
 
 export default connect(
