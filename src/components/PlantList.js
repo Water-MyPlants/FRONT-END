@@ -104,99 +104,83 @@ export default connect(
 )(FormikPlantForm);
 
 const ProfileStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  background-image: linear-gradient(to bottom, #518999 0%, #CE96A6 100%);
-  max-width: 280px;
-  width: 30%;
-  @media(max-width: 1000px) {
-    width: 40%;
-  }
-  @media(max-width: 768px) {
-    max-width: 100%;
-    width: 50%;
-  }
-  @media(max-width: 500px) {
-    max-width: 100%;
-    width: 90%;
-  }
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+background-image: linear-gradient(to bottom, #518999 0%, #CE96A6 100%);
+max-width: 280px;
+width: 30%;
+@media(max-width: 1000px) {
+  width: 40%;
+}
+@media(max-width: 768px) {
+  max-width: 100%;
+  width: 50%;
+}
+@media(max-width: 500px) {
+  max-width: 100%;
+  width: 90%;
+}
 .add-plant-container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  background-image: linear-gradient(to bottom, #518999 0%, #ce96a6 100%);
-  max-width: 280px;
-  width: 30%;
-  @media (max-width: 1000px) {
-    width: 40%;
+  justify-content: center;
+  height: 100%;
+  form {
+    width: 90%;
+    margin: 5% auto 20%;
   }
-  @media (max-width: 768px) {
-    max-width: 100%;
-    width: 50%;
+  input {
+    background: transparent;
+    margin: 5% auto;
+    width: 90%;
   }
-  .add-plant-container {
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    form {
-      width: 90%;
-      margin: 5% auto 20%;
-    }
-    input {
-      background: transparent;
-      margin: 5% auto;
-      width: 90%;
-    }
-    .add-btn {
-      margin: 5% auto;
-      width: 60%;
-      background: #518999;
-      color: white;
-      border-radius: 8px;
-      border: none;
-    }
-  }
-  .upload-container {
+  .add-btn{
+    margin: 5% auto;
     width: 60%;
-    display: flex;
-    flex-direction: column;
-    margin: 2% auto;
-    button {
-      margin: 3%;
-    }
+    background: #518999;
+    color: white;
+    border-radius: 8px;
+    border: none;
   }
-`;
-const PlantFormStyle = styled.div`
+}
+.upload-container {
+  width: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  width: 100%;
-  h1 {
-    text-align: center;
+  margin: 2% auto;
+  button {
+    margin: 3%;
   }
-  .form {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 1px 1px 3px black;
-    border-radius: 4px;
-    label {
-      margin: 2% 0 2% 5%;
-      font-size: 1.6rem;
-    }
-    input {
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-bottom: 1px solid black;
-    }
+}
+`;
+const PlantFormStyle = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+width: 100%;
+h1 {
+  text-align: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px 3px black;
+  border-radius: 4px;
+  label {
+    margin: 2% 0 2% 5%;
+    font-size: 1.6rem;
   }
+  input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+  }
+}
 `;
 const PlantListStyle = styled.section`
-  background-image: linear-gradient(to bottom, #eeeeed 0%, transparent 100%),
-    url(${wall});
+  background-image: linear-gradient(to bottom, #EEEEED 0%, transparent 100%), url(${wall});
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
@@ -204,7 +188,7 @@ const PlantListStyle = styled.section`
   flex-direction: column;
   width: 100%;
   overflow: auto;
-  @media (max-width: 768px) {
+  @media(max-width: 768px) {
     height: 100%;
     max-width: 100%;
     width: 100%;
@@ -218,8 +202,8 @@ const PlantListStyle = styled.section`
   h1 {
     color: #1a202c;
     margin: 8% auto;
-    font-size: 3.6rem;
-    @media (max-width: 768px) {
+    font-size:3.6rem;
+    @media(max-width: 768px) {
       font-size: 3rem;
     }
     @media(max-width: 666px) {
