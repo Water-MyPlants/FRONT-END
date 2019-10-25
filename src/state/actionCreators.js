@@ -16,6 +16,7 @@ export const userSignUpRequest = userData => dispatch => {
 };
 
 export const attemptLogin = (login, history) => dispatch => {
+  console.log(login)
   axios
     .post(loginApi, login)
     .then(({ data }) => {

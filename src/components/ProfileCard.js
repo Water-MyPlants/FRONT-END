@@ -25,12 +25,14 @@ const ProfileCard = ({
       <h3 className="profile-username">User: {username}</h3>
       <h3 className="profile-phonenumber">Phone: {phoneNumber}</h3>{" "}
       <div>
+        <label>Password: </label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
+        <label>Phone Number: </label>
         <input
           type="text"
           name="phoneNumber"
