@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
+import * as actionCreators from "../state/actionCreators";
+
 import ProfileCard from "./ProfileCard";
 import PlantCard from "./PlantCard";
-import UploadForm from "./UploadForm";
 import wall from "../assets/wall.jpeg";
-import * as actionCreators from "../state/actionCreators";
 
 export const PlantList = ({
   errors,
@@ -62,7 +62,6 @@ export const PlantList = ({
               ADD PLANT
             </button>
           </Form>
-          <UploadForm />
         </PlantFormStyle>
       </ProfileStyle>
       <PlantListStyle className="plant-list-container">
@@ -105,6 +104,25 @@ export default connect(
 )(FormikPlantForm);
 
 const ProfileStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-image: linear-gradient(to bottom, #518999 0%, #CE96A6 100%);
+  max-width: 280px;
+  width: 30%;
+  @media(max-width: 1000px) {
+    width: 40%;
+  }
+  @media(max-width: 768px) {
+    max-width: 100%;
+    width: 50%;
+  }
+  @media(max-width: 500px) {
+    max-width: 100%;
+    width: 90%;
+  }
+.add-plant-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -203,6 +221,12 @@ const PlantListStyle = styled.section`
     font-size: 3.6rem;
     @media (max-width: 768px) {
       font-size: 3rem;
+    }
+    @media(max-width: 666px) {
+      font-size: 2rem;
+    }
+    @media(max-width: 500px) {
+      font-size: 1.8rem;
     }
   }
 `;

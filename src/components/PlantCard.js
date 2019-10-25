@@ -99,7 +99,16 @@ const PlantCardStyle = styled.article`
     background-size: cover;
   }
   h2 {
+    font-size: 1.8rem;
     text-align: center;
-    color: white; 
+    color: white;
+    text-shadow: 2px 2px 2px black; 
+  }
+  h3 {
+    margin: 2%;
+    font-size: 1.6rem;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 2px black; 
   }
 `;
