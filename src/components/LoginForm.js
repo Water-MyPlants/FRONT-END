@@ -20,6 +20,8 @@ const LoginForm = ({ errors, touched, values, status, history, login, attemptLog
     history.push("/");
   };
   return withAuth.isLoggedIn() ? (
+    <button onClick={onLogout}>Logout</button>
+  ) : (
     <div id="login-form" className="form-container">
       <Form className="form" onSubmit={onLogin}>
         <div className="water-logo"></div>
@@ -44,9 +46,6 @@ const LoginForm = ({ errors, touched, values, status, history, login, attemptLog
         </NavLink>
       </Form>
     </div>
-    
-  ) : (
-    <button onClick={onLogout}>Logout</button>
   );
 };
 
