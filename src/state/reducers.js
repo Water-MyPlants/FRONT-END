@@ -35,7 +35,8 @@ const signupReducer = (state = initialState, action) => {
           ...state,
           username: action.payload,
           phoneNumber: action.payload
-        };
+        }; 
+        
 
       case types.EDIT_USER:
         return {
