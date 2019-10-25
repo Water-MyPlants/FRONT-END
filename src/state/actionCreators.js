@@ -90,11 +90,13 @@ export const deletePlant = id => dispatch => {
 // 		})
 // 		.catch(err => console.log(err))
 }
-
-// export const editUser = user => dispatch => {
-// 	withAuth.axiosWithAuth().put(`https://build-week-4.herokuapp.com/api/user/${user.id}`, user)
-// 		.then(({ data }) => {
-// 			dispatch(startEditPlant(data));
-// 		})
-// 		.catch(err => console.log(err))
-// }
+export const startEditUser = user => {
+	return { type: types.EDIT_USER, payload: user };
+}
+export const editUser = user => dispatch => {
+	withAuth.axiosWithAuth().put(`https://build-week-4.herokuapp.com/api/user/${user.id}`, user)
+		.then(({ data }) => {
+			dispatch(startEditUser(data));
+		})
+		.catch(err => console.log(err))
+}

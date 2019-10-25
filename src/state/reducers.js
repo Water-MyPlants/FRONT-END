@@ -5,7 +5,6 @@ const initialState = {
   password: "",
   phoneNumber: "",
   plantsList: null,
-  // editPlantId: 0
 };
 
 const signupReducer = (state = initialState, action) => {
@@ -24,12 +23,18 @@ const signupReducer = (state = initialState, action) => {
         ...state,
         ...action.payload
       };
-    case types.ADD_PLANT:
-      return {
-        ...state,
-        plantsList: [...state.plantsList, action.payload],
-
-      };
+      case types.ADD_PLANT:
+        return {
+          ...state,
+          plantsList: [...state.plantsList, action.payload],
+          
+        };
+      case types.EDIT_USER:
+        return {
+          ...state,
+          username: state.username !== action.payload ? action.payload : state,
+          phoneNumber: state.phoneNumber !== action.payload ? action.payload : state,
+        }
     case types.EDIT_PLANT:
       return {
         ...state,
