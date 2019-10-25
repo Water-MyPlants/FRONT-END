@@ -1,18 +1,31 @@
 import React from 'react';
-import waterLogo from '../assets/waterLogo.png';
+import { connect } from "react-redux";
 import styled from 'styled-components'
+import * as actionCreators from '../state/actionCreators';
 
-const ProfileCard = () => {
+import waterLogo from '../assets/waterLogo.png';
+
+const ProfileCard = ({ user, username, phoneNumber }) => {
+
+    // const onUserEdit = e => {
+    //     e.preventDefault();
+    //     editUser(user)
+    // }
     return (
         <ProfileCardStyle className='profile-container'>
             <img alt='profile thumbnail' src={waterLogo}/>
-            <h3 className='profile-phone'>+1 (509)991-1865</h3>
-            <h3 className='profile-password'>Nunya</h3>
+            <h3 className='profile-username'>{username}</h3>
+            <h3 className='profile-phonenumber'>{phoneNumber}</h3>
+            {/* <button onclick={onUserEdit}>Edit</button> */}
         </ProfileCardStyle>
     );
 };
 
-export default ProfileCard;
+export default connect(
+    state => state,
+    actionCreators
+  )(ProfileCard);
+  
 
 const ProfileCardStyle = styled.aside`
 display: flex;

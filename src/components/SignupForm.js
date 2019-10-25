@@ -9,12 +9,12 @@ import * as actionCreators from "../state/actionCreators";
 const SignupForm = ({
   errors,
   touched,
-  userData,
   values,
   status,
   userSignUpRequest,
-  // onSignUpInputChange
+
 }) => {
+
   const handleSubmit= (e) => {
     console.log('in handleSub',values)
     e.preventDefault();

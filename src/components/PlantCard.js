@@ -2,30 +2,55 @@ import React from "react";
 import styled from 'styled-components';
 import grass from '../assets/grass.jpeg';
 import flower from '../assets/flower.jpeg';
+import { connect } from "react-redux";
+import * as actionCreators from "../state/actionCreators";
 
 
-const PlantCard = ({ plant, editingPlant, deletePlant }) => {
+const PlantCard = ({ plant, editPlant, deletePlant }) => {
   const onEdit = e => {
-    editingPlant(plant);
+    console.log("called edit function", plant)
+    editPlant(plant);
   };
   const onDelete = e => {
     deletePlant(plant.id);
   };
+  
   return (
     <PlantCardStyle className="plant-card">
       <div className='plant-img' />
-      <h2>Big Bertha{plant.nickName}</h2>
-      <h3>Rose{plant.species}</h3>
-      <h3>once a day{plant.h2oFrequency}</h3>
+      <h2>{plant.id}</h2>
+      <h3>{plant.species}</h3>
+      <h3>{plant.h2oFrequency}</h3>
       <div className='btn-container'>
       <button onClick={onEdit}>Edit</button>
       <button onClick={onDelete}>Delete</button>
       </div>
+      {/* {plant && (
+        <form onSubmit={onEdit}>
+          <label>
+            Nick Name:
+            <input
+              onChange={}
+              value={}
+            />
+          </label>
+          <label>
+            Species:
+            <input
+              onChange={}
+              value={}
+            />
+          </label> */}
+      
     </PlantCardStyle>
-  );
+  )
 };
 
-export default PlantCard;
+export default connect(
+  state => state,
+  actionCreators
+)(PlantCard);
+
 
 const PlantCardStyle = styled.article`
   background-image: linear-gradient(to bottom, transparent 50%, black 100%), url(${grass});
@@ -38,7 +63,7 @@ const PlantCardStyle = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items; center;
+  align-items: center;
   padding: 3% 3% 1%;
   margin: 3%;
   width: 300px;

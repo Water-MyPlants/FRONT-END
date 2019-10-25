@@ -1,26 +1,30 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as actionCreators from "../state/actionCreators";
+import * as withAuth from "../helpers/axiosWithAuth";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { NavLink } from "react-router-dom";
-import {attemptLogin} from '../state/actionCreators' 
-import { connect } from 'react-redux'
 
 
+// Login Form with validation using Yup for Formik //
 
 const LoginForm = ({ errors, touched, values, status, history, login, attemptLogin, logout }) => {
+  const onLogin = e => {
+    e.preventDefault();
+    attemptLogin(values, history);
+  };
 
-  const handleSubmit = (e) =>{
-    e.preventDefault()
-    attemptLogin(values)
-
-  }
-  
-  return (
-    // Login Form with validation using Yup for Formik //
-
+  const onLogout = () => {
+    logout();
+    history.push("/");
+  };
+  return withAuth.isLoggedIn() ? (
+    <button onClick={onLogout}>Logout</button>
+  ) : (
     <div id="login-form" className="form-container">
-      <Form className="form" onSubmit={handleSubmit}>
-        <div className='water-logo'></div>
+      <Form className="form" onSubmit={onLogin}>
+        <div className="water-logo"></div>
         <label>User Name:</label>
         <Field type="text" name="username" placeholder="User Name" />
         <small>(Between 4-16 characters)</small>
@@ -36,12 +40,12 @@ const LoginForm = ({ errors, touched, values, status, history, login, attemptLog
         <button className="btn" type="submit">
           LOG IN
         </button>
+  
         <NavLink className="form-link" to="/signup">
         Dont have an account?
         </NavLink>
       </Form>
     </div>
-    //!!! Login Form with validation using Yup for Formik //
   );
 };
 
@@ -71,5 +75,5 @@ const FormikLoginForm = withFormik({
 
 export default connect(
   state => state,
-  attemptLogin
+  actionCreators
 )(FormikLoginForm);

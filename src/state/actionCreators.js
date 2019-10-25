@@ -1,42 +1,110 @@
-import axios from 'axios';
-import * as types from './actionTypes';
-// import * as withAuth from '../helpers/axiosWithAuth';
+import axios from "axios";
+import * as types from "./actionTypes";
+import * as withAuth from "../helpers/axiosWithAuth";
 
 const registerApi = "https://build-week-4.herokuapp.com/api/user/register";
-const loginApi = `https://build-week-4.herokuapp.com/api/user/login`
+const loginApi = "https://build-week-4.herokuapp.com/api/user/login";
+
 export const userSignUpRequest = userData => dispatch => {
-	console.log('in action creator',userData)
-      axios.post(registerApi, userData)
-      .then(({ data }) => {
-        dispatch({ type: types.SIGN_UP });
-        localStorage.setItem('login_token', data.payload);
+  axios
+    .post(registerApi, userData)
+    .then(({ data }) => {
+      dispatch({ type: types.SIGN_UP });
+      localStorage.setItem("token", data.token);
     })
     .catch(err => console.log(err));
-  };
+};
 
-//   export const onSignUpInputChange = field => {
-//       return {
-//           type: types.ON_SIGNUP_INPUT_CHANGE,
-//           payload: { [field.name]: field.value}
-//       };
-//   }
+export const attemptLogin = (login, history) => dispatch => {
+  axios
+    .post(loginApi, login)
+    .then(({ data }) => {
+      localStorage.setItem("token", data.token);
+      dispatch({ type: types.LOGIN });
+      history.push("/plants");
+    })
+    .catch(err => console.log(err));
+};
 
-export const setLoading = (isLoading) => {
-	return { type: types.SET_LOADING, payload: isLoading };
-}
+export const logout = () => {
+  localStorage.removeItem("token");
+  return { type: types.LOGOUT };
+};
 
+export const setPlantsList = plant => {
+  return { type: types.ADD_PLANT, payload: plant.id };
+};
 
-// export const logout = () => {
-// 	localStorage.removeItem('login_token');
-// 	return { type: types.LOGOUT };
-// }
-export const attemptLogin = (login) => dispatch => {
-	axios.post(loginApi, login)
-		.then(({ data }) => {
-			console.log('logged in', data);
-			dispatch({ type: types.LOGIN });
-			localStorage.setItem('login_token', data.payload);
-		})
-		.catch(err => console.log(err));
+export const addPlantToList = plant => dispatch => {
+  withAuth
+    .axiosWithAuth()
+    .post("https://build-week-4.herokuapp.com/api/plants", plant)
+    .then(({ data }) => {
+      data = plant.id ? dispatch(setPlantsList(plant)) : null;
+    })
+    .catch(err => console.log(err));
+};
 
-}
+export const displayPlantsList = list => {
+  return { type: types.GET_PLANT, payload: list };
+};
+export const getPlantList = () => dispatch => {
+  withAuth
+    .axiosWithAuth()
+    .get("https://build-week-4.herokuapp.com/api/plants")
+    .then(({ data }) => {
+      dispatch(displayPlantsList(data));
+    })
+    .catch(err => console.log(err));
+};
+
+export const startEditPlant = plant => {
+  return { type: types.EDIT_PLANT, payload: plant };
+};
+
+export const editPlant = plant => dispatch => {
+  withAuth
+    .axiosWithAuth()
+    .put(`https://build-week-4.herokuapp.com/api/plants/${plant.id}`, plant)
+    .then(({ data }) => {
+      dispatch(startEditPlant(data));
+    })
+    .catch(err => console.log(err));
+};
+
+export const startDeletePlant = plant => {
+  return { type: types.DELETE_PLANT, payload: plant };
+};
+
+export const deletePlant = id => dispatch => {
+  withAuth
+    .axiosWithAuth()
+    .delete(`https://build-week-4.herokuapp.com/api/plants/${id}`)
+    .then(() => {
+      dispatch(startDeletePlant(id));
+    })
+    .catch(err => console.log(err));
+};
+
+export const getSingleUser = user => dispatch => {
+  withAuth
+    .axiosWithAuth()
+    .get("https://build-week-4.herokuapp.com/api/user/single_user")
+    .then(data => {
+      console.log("single user data", data);
+      dispatch({ type: types.GET_USER, user });
+    });
+};
+
+export const startEditUser = user => {
+  return { type: types.EDIT_USER, payload: user };
+};
+export const editUser = user => dispatch => {
+  withAuth
+    .axiosWithAuth()
+    .put(`https://build-week-4.herokuapp.com/api/user/`, user)
+    .then(({ data }) => {
+      dispatch(startEditUser(data));
+    })
+    .catch(err => console.log(err));
+};

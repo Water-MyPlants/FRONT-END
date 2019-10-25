@@ -16,7 +16,7 @@ export const asRoute = ({ component: Component, props = {}, ...rest }) => (
   <Route
     {...rest}
     render={routeProps =>
-      localStorage.getItem("login_token") ? (
+      localStorage.getItem("token") ? (
         <Component {...routeProps} {...props} />
       ) : (
         <Redirect to="/" />
@@ -25,4 +25,4 @@ export const asRoute = ({ component: Component, props = {}, ...rest }) => (
   />
 );
 export const isLoggedIn = () =>
-  localStorage.getItem("login_token") ? true : false;
+  localStorage.getItem("token") ? true : false;
