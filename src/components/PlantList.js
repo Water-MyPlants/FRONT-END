@@ -27,7 +27,9 @@ export const PlantList = ({
     if(editingPlantId > 0) {
       editPlant(values);
     } else {
-      addPlantToList(values);
+      const { id, ...rest} = values;
+      console.log(rest)
+      addPlantToList(rest);
     }
     resetForm();
   };
@@ -40,7 +42,7 @@ export const PlantList = ({
       setValues(plantsList.find(plant => plant.id === editingPlantId));
     }
   }, [editingPlantId]);
-  console.log(plantsList);
+ 
   if (!plantsList) {
     return <h1>Loading...</h1>;
   }

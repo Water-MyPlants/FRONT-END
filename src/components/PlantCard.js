@@ -12,7 +12,7 @@ const PlantCard = ({ plant, startEditPlant, deletePlant }) => {
   };
   const onDelete = e => {
     deletePlant(plant.id);
-  };
+  }; 
   
   return (
     <PlantCardStyle className="plant-card">
