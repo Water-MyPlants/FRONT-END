@@ -115,7 +115,8 @@ export default connect(
 const ProfileStyle = styled.div`
 display: flex;
 flex-direction: column;
-justify-content: flex-start;
+justify-content: space-between;
+
 background-image: linear-gradient(to bottom, #518999 0%, #CE96A6 100%);
 max-width: 280px;
 width: 30%;
@@ -132,8 +133,7 @@ width: 30%;
 }
 .add-plant-container {
   display: flex;
-  justify-content: flex-end;
-  height: 100%;
+  flex-direction: column;
   form {
     width: 90%;
     margin: 5% auto;
@@ -163,9 +163,6 @@ width: 30%;
 }
 `;
 const PlantFormStyle = styled.div`
-display: flex;
-justify-content: flex-end;
-flex-direction: column;
 width: 100%;
 h1 {
   text-align: center;
